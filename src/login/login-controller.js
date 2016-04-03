@@ -33,8 +33,8 @@ angular.module('patientory')
     }
 
     function onSuccess(result) {
-      alert(result);
-      //$state.go('boards');
+      //alert(result);
+      $state.go('feed');
     }
 
     function onError(reason) {
