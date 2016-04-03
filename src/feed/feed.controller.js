@@ -1,42 +1,42 @@
 'use strict';
 
 angular.module('patientory')
-  .controller('FeedCtrl', function (FeedModel) {
+  .controller('FeedCtrl', function (FeedModel, UserModel) {
     var ctrl = this;
 
     ctrl.loading = false;
 
-    ctrl.newBoard = {
-      title: '',
-      description: '',
+    ctrl.newMessage = {
+      name: UserModel.getCurrentUser(),
+      text: '',
       isPublic: false
     };
 
     ctrl.resetForm = function () {
       ctrl.loading = false;
       ctrl.newBoard = {
-        title: '',
-        description: '',
+        name: '',
+        text: '',
         isPublic: false
       };
     };
 
-    ctrl.getBoards = function () {
+    ctrl.getFeed = function () {
       FeedModel.all()
         .then(function (result) {
-          ctrl.boards = (result !== 'null') ? result : {};
+          ctrl.feed = (result !== 'null') ? result : {};
         }, function () {
           ctrl.resetForm();
         });
     };
 
-    ctrl.createBoard = function (board, isValid) {
+    ctrl.postMessage = function (message, isValid) {
       if (isValid) {
         ctrl.loading = true;
 
-        FeedModel.create(board)
+        FeedModel.create(message)
           .then(function (result) {
-            ctrl.getBoards();
+            ctrl.getFeed();
           })
           .catch(function (reason) {
             //
@@ -52,7 +52,7 @@ angular.module('patientory')
         ctrl.loading = true;
         FeedModel.update(boardId, board)
           .then(function (result) {
-            ctrl.getBoards();
+            ctrl.getFeed();
           })
           .catch(function (reason) {
             //
@@ -66,7 +66,7 @@ angular.module('patientory')
     ctrl.deleteBoard = function (boardId) {
       FeedModel.destroy(boardId)
         .then(function (result) {
-          ctrl.getBoards();
+          ctrl.getFeed();
         })
         .catch(function (reason) {
           //
@@ -93,5 +93,5 @@ angular.module('patientory')
       ctrl.isEditing = false;
     };
 
-    ctrl.getBoards();
+    ctrl.getFeed();
   });
