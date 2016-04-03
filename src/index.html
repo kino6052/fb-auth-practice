@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="noterious">
+<html ng-app="patientory">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -42,17 +42,19 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
     <script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
     <script src="//cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
-
-    <script src="app/noterious.js"></script>
-    <script>
-      var navMain = angular.element(".navbar-collapse");
-      navMain.on("click", "a", null, function () {
-         navMain.collapse('hide');
-      });
-    </script>
+    <script src="vendor/angular-ui-router.min.js"></script>
+    <script src="vendor/angularfire.js"></script>
+    <script src="app.js"></script>
+    
+    <script src="common/common.js"></script>
+    
+    <script src="common/models/user-model.js"></script>
+    <script src="common/services/auth-service.js"></script>
+    <script src="login/login-controller.js"></script>
+    <script src="main/main-controller.js"></script>
   </body>
 </html>
