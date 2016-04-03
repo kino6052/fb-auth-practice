@@ -1,0 +1,26 @@
+{
+  "name": "fb-auth-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kino6052/fb-auth-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kino6052/fb-auth-practice/issues"
+  },
+  "homepage": "https://github.com/kino6052/fb-auth-practice#readme",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "firebase": "^2.2.2"
+  },
+  "devDependencies": {
+    "gulp-cli": "^1.2.1"
+  }
+}
