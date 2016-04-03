@@ -19,7 +19,8 @@ angular.module('patientory', [
       .state('feed', {
         url:'/feed',
         templateUrl: 'feed/feed.tmpl.html',
-        
+        controller: 'FeedCtrl',
+        controllerAs: 'ctrl',
         resolve: {
           'currentUser': ['Auth', function (Auth) {
             return Auth.$requireAuth();

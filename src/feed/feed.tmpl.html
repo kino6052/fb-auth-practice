@@ -1,3 +1,12 @@
+
 <div>
-    <h1>Hello!</h1>
+    <h1>HELLO</h1>
+</div>
+<div
+    class="col-sm-4"
+    ng-repeat="(key, val) in ctrl.boards"
+    board="board"
+    board-id="{{boardId}}"
+    remove="ctrl.deleteBoard(boardId)">
+    {{val.text}}
 </div>
