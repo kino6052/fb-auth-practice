@@ -12,8 +12,8 @@ angular.module('patientory.common')
       return ENDPOINT_URI + 'messages.json';
     }
 
-    function getUrlForId(boardId) {
-      return ENDPOINT_URI + 'users/' + UserModel.getCurrentUser() + '/boards/' + boardId + '.json';
+    function getUrlForId(messageId) {
+      return ENDPOINT_URI + 'messages/' + messageId + '.json';
     }
 
     service.all = function () {
@@ -28,8 +28,8 @@ angular.module('patientory.common')
       return $http.post(getUrl(), board).then(extract);
     };
 
-    service.update = function (boardId, board) {
-      return $http.put(getUrlForId(boardId), board).then(extract);
+    service.update = function (messageId, message) {
+      return $http.put(getUrlForId(messageId), message).then(extract);
     };
 
     service.destroy = function (boardId) {

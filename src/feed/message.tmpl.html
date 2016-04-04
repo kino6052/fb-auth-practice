@@ -1,0 +1,34 @@
+<div class="edit board">
+  <p>{{messageId}}</p>
+  <p>{{message}}</p>
+  <div class="caption">
+    <div>
+      <input
+        type="text"
+        class="medium"
+        ng-model="message.text"
+        ng-blur="ctrl.updateMessage(messageId, message)"
+        placeholder="Message Title">
+    </div>
+    <div>
+      <input type="text"
+         ng-model="ctrl.message.description"
+         ng-blur="ctrl.updateMessage(ctrl.boardId, ctrl.board)"
+         placeholder="Board description.">
+    </div>
+    <div class="bottom x-small">
+      <input
+        type="checkbox"
+        ng-model="ctrl.message.diabetes"
+        ng-blur="ctrl.updateMessage(ctrl.boardId, ctrl.board)">
+      Board is Public
+    </div>
+    <a
+      type="button"
+      ng-click="ctrl.postComment"
+      class="view arrow-bottom-right btn btn-default">
+      <span class="glyphicon glyphicon-arrow-right"></span>
+    </a>
+    <span ng-show="ctrl.loading" class="glyphicon glyphicon-refresh"></span>
+  </div>
+</div>
