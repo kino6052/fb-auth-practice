@@ -23,6 +23,7 @@ angular.module('patientory')
     }
 
     function onLogin() {
+      console.log("onLogin in the Login Controller");
       UserModel.login({
           email: login.user.email,
           password: login.user.password
@@ -33,7 +34,9 @@ angular.module('patientory')
     }
 
     function onSuccess(result) {
-      //alert(result);
+      console.log("onSuccess in the Login Controller");
+      console.log("RESULTS: " + JSON.stringify(result));
+      UserModel.userObject = result;
       $state.go('feed');
     }
 
@@ -50,8 +53,10 @@ angular.module('patientory')
         login.loading = true;
 
         if (isRegistering) {
+          alert("Registering...")
           register();
         } else {
+          alert("Loging in...")
           onLogin();
         }
       }

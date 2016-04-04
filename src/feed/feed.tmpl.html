@@ -4,50 +4,9 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <!-- NEW BOARD -->
-      <div class="create board">
-        <div class="caption">
-          <form
-              name="ctrl.createForm"
-              class="create-form"
-              role="form"
-              ng-submit="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid)"
-              novalidate>
-            <fieldset>
-              <div>
-                <input
-                    type="text"
-                    class="medium"
-                    ng-model="ctrl.newMessage.name"
-                    placeholder="Message Name"
-                    required>
-              </div>
-              <div>
-                <input
-                    type="text"
-                    ng-model="ctrl.newMessage.text"
-                    placeholder="Message Title"
-                    required>
-              </div>
-              <div class="bottom x-small">
-                <input
-                    type="checkbox"
-                    ng-model="ctrl.newBoard.isPublic">
-                Board is Public
-              </div>
-              <button
-                  type="submit"
-                  class="bottom-right-corner btn btn-default">
-                <span class="glyphicon glyphicon-plus"></span>
-              </button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
+  <div class="">
+    
+    <div class="">
       <!-- NEW COMMENT -->
       <div class="create board">
         <div class="caption">
@@ -90,7 +49,7 @@
       </div>
     </div>
 <div
-    class="col-sm-4"
+    class=""
     ng-repeat="(key, val) in ctrl.feed"
     message='val'
     message-id="{{key}}"

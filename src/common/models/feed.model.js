@@ -20,19 +20,19 @@ angular.module('patientory.common')
       return $http.get(getUrl()).then(extract);
     };
 
-    service.fetch = function (boardId) {
-      return $http.get(getUrlForId(boardId)).then(extract);
+    service.fetch = function (messageId) {
+      return $http.get(getUrlForId(messageId)).then(extract);
     };
 
-    service.create = function (board) {
-      return $http.post(getUrl(), board).then(extract);
+    service.create = function (message) {
+      return $http.post(getUrl(), message).then(extract);
     };
 
     service.update = function (messageId, message) {
       return $http.put(getUrlForId(messageId), message).then(extract);
     };
 
-    service.destroy = function (boardId) {
-      return $http.delete(getUrlForId(boardId)).then(extract);
+    service.destroy = function (messageId) {
+      return $http.delete(getUrlForId(messageId)).then(extract);
     };
   });

@@ -7,8 +7,8 @@ angular.module('patientory')
     ctrl.loading = false;
 
     ctrl.newMessage = {
-      name: UserModel.getCurrentUser(),
-      text: '',
+      name: UserModel.userObject.uid,
+      text: UserModel.userObject.password.email,
       isPublic: false
     };
 
@@ -47,10 +47,10 @@ angular.module('patientory')
       }
     };
 
-    ctrl.updateBoard = function (boardId, board, isValid) {
+    ctrl.updateBoard = function (messageId, message, isValid) {
       if (isValid) {
         ctrl.loading = true;
-        FeedModel.update(boardId, board)
+        FeedModel.update(messageId, message)
           .then(function (result) {
             ctrl.getFeed();
           })
@@ -63,8 +63,8 @@ angular.module('patientory')
       }
     };
 
-    ctrl.deleteBoard = function (boardId) {
-      FeedModel.destroy(boardId)
+    ctrl.deleteBoard = function (messageId) {
+      FeedModel.destroy(messageId)
         .then(function (result) {
           ctrl.getFeed();
         })
@@ -76,14 +76,14 @@ angular.module('patientory')
         });
     };
 
-    ctrl.setEditedBoard = function (boardId, board) {
-      ctrl.editedBoardId = boardId;
-      ctrl.editedBoard = angular.copy(board);
+    ctrl.setEditedBoard = function (messageId, message) {
+      ctrl.editedBoardId = messageId;
+      ctrl.editedBoard = angular.copy(message);
       ctrl.isEditing = true;
     };
 
-    ctrl.isCurrentBoard = function (boardId) {
-      return ctrl.editedBoard !== null && ctrl.editedBoardId === boardId;
+    ctrl.isCurrentBoard = function (messageId) {
+      return ctrl.editedBoard !== null && ctrl.editedBoardId === messageId;
     };
 
     ctrl.cancelEditing = function () {

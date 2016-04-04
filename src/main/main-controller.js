@@ -7,18 +7,6 @@ angular.module('patientory')
     main.currentUser = null;
     main.currentColor = 'blue';
 
-    main.colors = [
-      'blue',
-      'green',
-      'orange',
-      'red',
-      'yellow'
-    ];
-
-    main.setCurrentColor = function(color) {
-      main.currentColor = color;
-    };
-
     main.logout = function () {
       UserModel.logout();
       $state.go('login');
