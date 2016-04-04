@@ -7,7 +7,7 @@ angular.module('patientory', [
 ])
   .constant('ENDPOINT_URI', 'https://torrid-torch-3843.firebaseio.com/')
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/feed');
+    $urlRouterProvider.otherwise('/feed?tag=t1d');
 
     $stateProvider
       .state('login', {
@@ -17,7 +17,7 @@ angular.module('patientory', [
         controllerAs: 'login'
       })
       .state('feed', {
-        url:'/feed',
+        url:'/feed?tag',
         templateUrl: 'feed/feed.tmpl.html',
         controller: 'FeedCtrl',
         controllerAs: 'ctrl',

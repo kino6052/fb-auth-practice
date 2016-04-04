@@ -9,7 +9,7 @@ angular.module('patientory')
         alert("postComment(" + messageId + ', ' + comment);
         FeedModel.comment(messageId, comment)
           .then(function(result){
-            $rootScope.$broadcast('commentPosted');
+            $rootScope.$broadcast('updateFeed');
           });
       };
 

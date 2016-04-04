@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('patientory')
-  .controller('FeedCtrl', function ($rootScope, $scope, FeedModel, UserModel, CommentModel) {
+  .controller('FeedCtrl', function ($rootScope, $scope, $stateParams, FeedModel, UserModel, CommentModel) {
     var ctrl = this;
-
+    ctrl.stateParams = $stateParams;
     ctrl.loading = false;
 
     ctrl.newMessage = {
@@ -12,7 +12,7 @@ angular.module('patientory')
       isPublic: false
     };
     
-    $scope.$on('commentPosted', function() {
+    $scope.$on('updateFeed', function() {
       ctrl.getFeed();
       //console.log("COMMENT POSTED EVENT");
     });
@@ -20,9 +20,9 @@ angular.module('patientory')
     ctrl.resetForm = function () {
       ctrl.loading = false;
       ctrl.newBoard = {
-        name: '',
-        text: '',
-        isPublic: false
+        email: UserModel.getEmail(),
+        uid: UserMode.getCurrentUser(),
+        text: ''
       };
     };
 
@@ -52,53 +52,5 @@ angular.module('patientory')
       }
     };
     
-    
-
-    ctrl.updateBoard = function (messageId, message, isValid) {
-      if (isValid) {
-        ctrl.loading = true;
-        FeedModel.update(messageId, message)
-          .then(function (result) {
-            ctrl.getFeed();
-          })
-          .catch(function (reason) {
-            //
-          })
-          .finally(function () {
-            ctrl.cancelEditing();
-          });
-      }
-    };
-
-    ctrl.deleteBoard = function (messageId) {
-      FeedModel.destroy(messageId)
-        .then(function (result) {
-          ctrl.getFeed();
-        })
-        .catch(function (reason) {
-          //
-        })
-        .finally(function () {
-          ctrl.cancelEditing();
-        });
-    };
-
-    ctrl.setEditedBoard = function (messageId, message) {
-      ctrl.editedBoardId = messageId;
-      ctrl.editedBoard = angular.copy(message);
-      ctrl.isEditing = true;
-    };
-
-    ctrl.isCurrentBoard = function (messageId) {
-      return ctrl.editedBoard !== null && ctrl.editedBoardId === messageId;
-    };
-
-    ctrl.cancelEditing = function () {
-      ctrl.loading = false;
-      ctrl.editedBoardId = null;
-      ctrl.editedBoard = null;
-      ctrl.isEditing = false;
-    };
-
     ctrl.getFeed();
   });

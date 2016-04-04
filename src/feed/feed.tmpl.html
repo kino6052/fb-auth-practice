@@ -1,6 +1,7 @@
 
 <div>
     <h1>HELLO</h1>
+    <p>{{stateParams}}</p>
 </div>
 
 <div class="container">
@@ -20,16 +21,8 @@
               <div>
                 <input
                     type="text"
-                    class="medium"
-                    ng-model="ctrl.newMessage.name"
-                    placeholder="Message Name"
-                    required>
-              </div>
-              <div>
-                <input
-                    type="text"
                     ng-model="ctrl.newMessage.text"
-                    placeholder="Message Title"
+                    placeholder="Message Content"
                     required>
               </div>
               <div class="bottom x-small">

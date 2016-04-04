@@ -26,6 +26,4 @@ angular.module('patientory.common')
     service.create = function (messageId, comment) {
       return $http.post(getUrlForId(messageId), comment).catch(onError).then(extract);
     };
-
-    
   });

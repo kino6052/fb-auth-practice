@@ -1,13 +1,12 @@
 <div class="edit board">
-  <p>{{messageId}}</p>
-  <p>{{message}}</p>
+  <p>{{message.text}}</p>
   <div class="caption">
     <div>
       <input
         type="text"
         class="medium"
-        ng-model="message.text"
-        ng-blur="ctrl.postComment(messageId, {test:'test'})"
+        ng-model="message.newComment"
+        ng-blur="ctrl.postComment(messageId, {text: message.newComment})"
         placeholder="Comment Content">
     </div>
     <div ng-repeat="(key, val) in message.comments">
