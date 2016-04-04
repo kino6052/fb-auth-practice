@@ -3,7 +3,7 @@
 angular.module('patientory.common')
   .service('FeedModel', function ($http, UserModel, CommentModel, ENDPOINT_URI) {
     var service = this;
-
+    var encodeJSON = function(json) { return encodeURIComponent(JSON.stringify(json)) };
     function extract(result) {
       return result.data;
     }
@@ -18,6 +18,11 @@ angular.module('patientory.common')
 
     service.all = function () {
       return $http.get(getUrl()).then(extract);
+    };
+    
+    service.equalTo = function (parameter) {
+      console.log(getUrl() + '?' + encodeJSON({orderBy: "tag", equalTo: parameter}));
+      return $http.get(getUrl() + '?orderBy=' + JSON.stringify("tag") + '&equalTo=' + JSON.stringify("t1d")).then(extract);
     };
 
     service.fetch = function (messageId) {

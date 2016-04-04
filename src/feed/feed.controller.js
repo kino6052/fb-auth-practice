@@ -4,6 +4,7 @@ angular.module('patientory')
   .controller('FeedCtrl', function ($rootScope, $scope, $stateParams, FeedModel, UserModel, CommentModel) {
     var ctrl = this;
     ctrl.stateParams = $stateParams;
+    ctrl.tag=ctrl.stateParams.tag;
     ctrl.loading = false;
 
     ctrl.newMessage = {
@@ -21,13 +22,13 @@ angular.module('patientory')
       ctrl.loading = false;
       ctrl.newBoard = {
         email: UserModel.getEmail(),
-        uid: UserMode.getCurrentUser(),
+        uid: UserModel.getCurrentUser(),
         text: ''
       };
     };
 
     ctrl.getFeed = function () {
-      FeedModel.all()
+      FeedModel.equalTo(ctrl.tag)
         .then(function (result) {
           ctrl.feed = (result !== 'null') ? result : {};
         }, function () {
