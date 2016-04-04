@@ -37,6 +37,7 @@ angular.module('patientory')
       console.log("onSuccess in the Login Controller");
       console.log("RESULTS: " + JSON.stringify(result));
       UserModel.userObject = result;
+      UserModel.saveUserInfo(result);
       $state.go('feed');
     }
 

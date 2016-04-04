@@ -34,13 +34,14 @@ angular.module('patientory.common')
       service.create(user);  
     };
     
-    service.getEmail = function() {
-      console.log(email);
-      return email;
+    service.getEmail = function(userObject) {
+      // TODO: Implement Safe Search of the Properties
+      return userObject.password.email;
     };
     
-    service.getCurrentUser = function () {
-      return currentUser;
+    service.getCurrentUser = function (userObject) {
+      // TODO: Implement Safe Search of the Properties
+      return userObject.uid;
     };
 
     service.setCurrentUser = function (user) {
@@ -52,15 +53,6 @@ angular.module('patientory.common')
       return Auth.$authWithPassword({
         email: user.email,
         password: user.password
-      }, function(error, authData) {
-        
-        if (error) {
-          currentUser = null;
-          console.error('Authentication failed:', error);
-        } else {
-          currentUser = authData.uid;
-          console.log('Logged in as:', authData.uid);
-        }
       });
     };
 
@@ -68,14 +60,6 @@ angular.module('patientory.common')
       return Auth.$createUser({
         email: user.email,
         password: user.password
-      }, function(error, authData) {
-        if(error){
-          console.error('Error: ', error);
-          return error;
-        } else {
-          
-          
-        }
       });
     };
 
