@@ -1,5 +1,5 @@
 angular.module('patientory')
-  .directive('message', function(FeedModel){
+  .directive('message', function($rootScope, FeedModel){
     var controller = function() {
       var ctrl = this;
 
@@ -9,7 +9,7 @@ angular.module('patientory')
         alert("postComment(" + messageId + ', ' + comment);
         FeedModel.comment(messageId, comment)
           .then(function(result){
-            ctrl.getFeed();
+            $rootScope.$broadcast('commentPosted');
           });
       };
 

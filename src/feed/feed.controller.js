@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('patientory')
-  .controller('FeedCtrl', function (FeedModel, UserModel, CommentModel) {
+  .controller('FeedCtrl', function ($rootScope, $scope, FeedModel, UserModel, CommentModel) {
     var ctrl = this;
 
     ctrl.loading = false;
@@ -11,7 +11,12 @@ angular.module('patientory')
       text: UserModel.getEmail(UserModel.userObject),
       isPublic: false
     };
-
+    
+    $scope.$on('commentPosted', function() {
+      ctrl.getFeed();
+      //console.log("COMMENT POSTED EVENT");
+    });
+    
     ctrl.resetForm = function () {
       ctrl.loading = false;
       ctrl.newBoard = {
