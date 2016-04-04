@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('patientory')
-  .controller('FeedCtrl', function (FeedModel, UserModel) {
+  .controller('FeedCtrl', function (FeedModel, UserModel, CommentModel) {
     var ctrl = this;
 
     ctrl.loading = false;
@@ -46,6 +46,8 @@ angular.module('patientory')
           });
       }
     };
+    
+    
 
     ctrl.updateBoard = function (messageId, message, isValid) {
       if (isValid) {

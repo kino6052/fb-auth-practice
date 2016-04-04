@@ -5,6 +5,14 @@ angular.module('patientory')
 
       ctrl.loading = false;
 
+      ctrl.postComment = function (messageId, comment) {
+        alert("postComment(" + messageId + ', ' + comment);
+        FeedModel.comment(messageId, comment)
+          .then(function(result){
+            ctrl.getFeed();
+          });
+      };
+
       ctrl.updateMessage = function (messageId, message) {
         ctrl.loading = true;
         FeedModel.update(messageId, message)

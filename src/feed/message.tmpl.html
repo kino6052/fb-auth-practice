@@ -7,25 +7,25 @@
         type="text"
         class="medium"
         ng-model="message.text"
-        ng-blur="ctrl.updateMessage(messageId, message)"
-        placeholder="Message Title">
+        ng-blur="ctrl.postComment(messageId, {test:'test'})"
+        placeholder="Comment Content">
     </div>
     <div>
       <input type="text"
          ng-model="ctrl.message.description"
-         ng-blur="ctrl.updateMessage(ctrl.boardId, ctrl.board)"
+         ng-blur="ctrl.postComment(messageId, {test:'test'})"
          placeholder="Board description.">
     </div>
     <div class="bottom x-small">
       <input
         type="checkbox"
         ng-model="ctrl.message.diabetes"
-        ng-blur="ctrl.updateMessage(ctrl.boardId, ctrl.board)">
+        ng-blur="ctrl.postComment(messageId, {test:'test'})">
       Board is Public
     </div>
     <a
       type="button"
-      ng-click="ctrl.postComment"
+      ng-click="ctrl.postComment(messageId, message.text)"
       class="view arrow-bottom-right btn btn-default">
       <span class="glyphicon glyphicon-arrow-right"></span>
     </a>

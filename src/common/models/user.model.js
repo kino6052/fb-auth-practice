@@ -36,12 +36,27 @@ angular.module('patientory.common')
     
     service.getEmail = function(userObject) {
       // TODO: Implement Safe Search of the Properties
-      return userObject.password.email;
+      var ref = new Firebase(ENDPOINT_URI);
+      var authData = ref.getAuth();
+      try {
+        return authData.password.email;
+      }
+      catch (err) {
+        return;
+      }
+      
     };
     
     service.getCurrentUser = function (userObject) {
       // TODO: Implement Safe Search of the Properties
-      return userObject.uid;
+      var ref = new Firebase(ENDPOINT_URI);
+      var authData = ref.getAuth();
+      try {
+        return authData.uid;
+      }
+      catch (err) {
+        return;
+      }
     };
 
     service.setCurrentUser = function (user) {
