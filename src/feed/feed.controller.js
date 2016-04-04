@@ -8,8 +8,13 @@ angular.module('patientory')
     ctrl.loading = false;
     var uo = UserModel.userObject;
     var userId   = UserModel.getCurrentUser();
+    function getValue(object){
+      for (var key in object){
+        return object[key];
+      }
+    }
     $scope.$on("userData", function(){
-      ctrl.newMessage.user = UserModel.userData;
+      ctrl.newMessage.user = getValue(UserModel.userData);
     });
     ctrl.userStuff = UserModel.getUserData(userId);
     ctrl.newMessage = {
