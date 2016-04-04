@@ -6,13 +6,15 @@ angular.module('patientory')
     ctrl.stateParams = $stateParams;
     ctrl.tag=ctrl.stateParams.tag;
     ctrl.loading = false;
-    var uo = UserModel.userObject;
+    
     var userId   = UserModel.getCurrentUser();
     function getValue(object){
       for (var key in object){
         return object[key];
       }
     }
+    
+    
     $scope.$on("userData", function(){
       ctrl.newMessage.user = getValue(UserModel.userData);
     });
