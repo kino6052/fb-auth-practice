@@ -10,18 +10,8 @@
         ng-blur="ctrl.postComment(messageId, {test:'test'})"
         placeholder="Comment Content">
     </div>
-    <div>
-      <input type="text"
-         ng-model="ctrl.message.description"
-         ng-blur="ctrl.postComment(messageId, {test:'test'})"
-         placeholder="Board description.">
-    </div>
-    <div class="bottom x-small">
-      <input
-        type="checkbox"
-        ng-model="ctrl.message.diabetes"
-        ng-blur="ctrl.postComment(messageId, {test:'test'})">
-      Board is Public
+    <div ng-repeat="(key, val) in message.comments">
+      {{val}}
     </div>
     <a
       type="button"
