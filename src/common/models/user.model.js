@@ -3,7 +3,7 @@
 // GET USER OBJECT BY USER ID: https://torrid-torch-3843.firebaseio.com/users.json?orderBy=%22userData/uid%22&equalTo=%22db55c713-12ab-44f4-907a-97bdd0bf68fb%22
 
 angular.module('patientory.common')
-  .service('UserModel', function ($http, Auth, ENDPOINT_URI) {
+  .service('UserModel', function ($http, $rootScope, Auth, ENDPOINT_URI) {
     var service = this;
     var currentUser = null;
     var userObject = {};
@@ -53,12 +53,14 @@ angular.module('patientory.common')
       
     };
     
+    service.userData = {};
+    
     service.getUserData = function (userId) {
       // TODO: Implement Safe Search of the Properties
-      return $http.get(ENDPOINT_URI + 'users.json?orderBy=' + JSON.stringify("uid") + 'equalTo=' + JSON.stringify(userId)).then(extract);
-    };
+      return $http.get(ENDPOINT_URI + 'users.json?orderBy=' + JSON.stringify("userData/uid") + '&equalTo=' + JSON.stringify(userId)).then(function(response){service.userData = response.data; $rootScope.$broadcast("userData")})
+    }
     
-    service.getCurrentUser = function (userObject) {
+    service.getCurrentUser = function () {
       // TODO: Implement Safe Search of the Properties
       var ref = new Firebase(ENDPOINT_URI);
       var authData = ref.getAuth();

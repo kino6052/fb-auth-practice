@@ -6,10 +6,15 @@ angular.module('patientory')
     ctrl.stateParams = $stateParams;
     ctrl.tag=ctrl.stateParams.tag;
     ctrl.loading = false;
-
+    var uo = UserModel.userObject;
+    var userId   = UserModel.getCurrentUser();
+    $scope.$on("userData", function(){
+      ctrl.newMessage.user = UserModel.userData;
+    });
+    ctrl.userStuff = UserModel.getUserData(userId);
     ctrl.newMessage = {
-      userId: UserModel.getCurrentUser(UserModel.userObject),
-      user: UserModel.getUserData(UserModel.getCurrentUser(UserModel.userObject)),
+      userId: userId,
+      user: {},
       userEmail: UserModel.getEmail(),
       text: UserModel.getEmail(UserModel.userObject),
       isPublic: false
