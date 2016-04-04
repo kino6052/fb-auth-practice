@@ -1,5 +1,7 @@
 'use strict';
 
+// GET USER OBJECT BY USER ID: https://torrid-torch-3843.firebaseio.com/users.json?orderBy=%22userData/uid%22&equalTo=%22db55c713-12ab-44f4-907a-97bdd0bf68fb%22
+
 angular.module('patientory.common')
   .service('UserModel', function ($http, Auth, ENDPOINT_URI) {
     var service = this;
@@ -29,6 +31,10 @@ angular.module('patientory.common')
     service.create = function (user) {
       return $http.post(getUrl(), user).then(extract);
     };
+    
+    service.createFromId = function (id, user) {
+      return $http.post(getUrlForId(id), user).catch(function(err){console.log(err);}).then(extract);
+    };
 
     service.saveUserInfo = function(user){
       service.create(user);  
@@ -45,6 +51,11 @@ angular.module('patientory.common')
         return;
       }
       
+    };
+    
+    service.getUserData = function (userId) {
+      // TODO: Implement Safe Search of the Properties
+      return $http.get(ENDPOINT_URI + 'users.json?orderBy=' + JSON.stringify("uid") + 'equalTo=' + JSON.stringify(userId)).then(extract);
     };
     
     service.getCurrentUser = function (userObject) {

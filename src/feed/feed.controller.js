@@ -8,7 +8,9 @@ angular.module('patientory')
     ctrl.loading = false;
 
     ctrl.newMessage = {
-      name: UserModel.getCurrentUser(UserModel.userObject),
+      userId: UserModel.getCurrentUser(UserModel.userObject),
+      user: UserModel.getUserData(UserModel.getCurrentUser(UserModel.userObject)),
+      userEmail: UserModel.getEmail(),
       text: UserModel.getEmail(UserModel.userObject),
       isPublic: false
     };

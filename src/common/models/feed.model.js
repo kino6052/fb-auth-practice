@@ -21,8 +21,10 @@ angular.module('patientory.common')
     };
     
     service.equalTo = function (parameter) {
-      console.log(getUrl() + '?' + encodeJSON({orderBy: "tag", equalTo: parameter}));
-      return $http.get(getUrl() + '?orderBy=' + JSON.stringify("tag") + '&equalTo=' + JSON.stringify("t1d")).then(extract);
+      if (parameter) {
+        return $http.get(getUrl() + '?orderBy=' + JSON.stringify("tag") + '&equalTo=' + JSON.stringify(parameter)).then(extract);
+      } 
+      else  return $http.get(getUrl()).then(extract);
     };
 
     service.fetch = function (messageId) {

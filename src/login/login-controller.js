@@ -15,11 +15,12 @@ angular.module('patientory')
     function register() {
       UserModel.register({
           email: login.user.email,
-          password: login.user.password
+          password: login.user.password,
       })
       .then(onLogin)
+      .then(onSuccess)
       .catch(onError)
-      .finally(onCompletion);
+      .finally();
     }
 
     function onLogin() {
@@ -37,6 +38,10 @@ angular.module('patientory')
       console.log("onSuccess in the Login Controller");
       console.log("RESULTS: " + JSON.stringify(result));
       UserModel.userObject = result;
+      console.log("onRegistrationCompletion");
+      //login.user.uid = UserModel.userObject.uid;
+      login.user.userData = result;
+      UserModel.create(login.user);
       $state.go('feed');
     }
 
@@ -46,6 +51,10 @@ angular.module('patientory')
 
     function onCompletion() {
       login.reset();
+    }
+    
+    function onRegistrationCompletion() {
+      
     }
 
     login.submit = function (user, isValid, isRegistering) {
