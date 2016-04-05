@@ -2,12 +2,13 @@
 <div>
     <h1>HELLO</h1>
     <p>{{tag}}</p>
+    <button ng-click="ctrl.toggleMessagePopup();">New Message</button>
 </div>
 
 <div class="container">
   <div class="">
     
-    <div class="">
+    <div class="" ng-if="ctrl.messagePopup">
       <!-- NEW COMMENT -->
       <div class="create board">
         <div class="caption">
@@ -15,23 +16,9 @@
               name="ctrl.createForm"
               class="create-form"
               role="form"
-              ng-submit="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid)"
+              ng-submit="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid);toggleMessagePopup()"
               novalidate>
             <fieldset>
-              <div>
-                <input
-                    type="text"
-                    ng-model="ctrl.newMessage.firstName"
-                    placeholder="First Name"
-                    required>
-              </div>
-              <div>
-                <input
-                    type="text"
-                    ng-model="ctrl.newMessage.lastName"
-                    placeholder="Last Name"
-                    required>
-              </div>
               <div>
                 <input
                     type="text"
@@ -44,6 +31,7 @@
                   class="bottom-right-corner btn btn-default">
                 <span class="glyphicon glyphicon-plus"></span>
               </button>
+              <button ng-click="ctrl.reset();ctrl.toggleMessagePopup();">Cancel</button>
             </fieldset>
           </form>
         </div>
