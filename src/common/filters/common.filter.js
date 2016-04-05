@@ -3,8 +3,12 @@ angular.module('patientory')
       return function(items) {
         var array = [];
         for (var item in items){
-            array.unshift(items[item]);
+            console.log(item);
+            var object = {};
+            object[item] = items[item];
+            array.unshift(object);
         }
+        console.log(array);
         return array;
         //return items.slice().reverse();
       };
