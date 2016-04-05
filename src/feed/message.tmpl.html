@@ -94,6 +94,11 @@
   <h2>{{message.user.firstName}} {{message.user.lastName}}</h2>
   <i>{{message.user.email}}</i>
   <p>{{message.text}}</p>
+  <div class="tags">
+    <div ng-repeat="tag in message.tag">
+      {{tag}}
+    </div>
+  </div>
   <div class="social-buttons">
     <button class="btn btn-primary" ng-click="ctrl.toggleCommentPopup()">Respond</button>
   </div>
