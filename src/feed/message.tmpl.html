@@ -55,8 +55,34 @@
       border: 1px solid grey;
       border-radius: 8px;
       line-height: 60px;
-      
       font-size: 20pt; }
+
+.comment-popup {
+  text-align: center;
+  z-index: 1000;
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%; }
+  .comment-popup h1, .comment-popup h2 {
+    font-size: 30pt;
+    text-align: center; }
+  .comment-popup textarea {
+    font-size: 30pt;
+    width: 600px;
+    height: 80%;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  .comment-popup button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 40px; }
 </style>
 <div ng-if="ctrl.commentPopup" class="comment-popup">
   <h2>POST COMMENT</h2>
