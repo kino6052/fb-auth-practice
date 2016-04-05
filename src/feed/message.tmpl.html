@@ -90,12 +90,15 @@
   <button ng-click="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment});ctrl.toggleCommentPopup();" class="button-red">Submit</button>
   <button ng-click="ctrl.reset();ctrl.toggleCommentPopup();">Cancel</button>
 </div>
-<div class="edit board" style="border: 1px solid grey; margin: 5px; padding: 10px;">
+<div class="message-container">
   <h2>{{message.user.firstName}} {{message.user.lastName}}</h2>
   <i>{{message.user.email}}</i>
   <p>{{message.text}}</p>
+  <div class="social-buttons">
+    <button class="btn btn-primary" ng-click="ctrl.toggleCommentPopup()">Respond</button>
+  </div>
   <div class="caption">
-    <button class="button-red" ng-click="ctrl.toggleCommentPopup()">New Comment</button>
+    
     <div class="comments">
       <h3>Comments</h3>
       <div class="comment">
