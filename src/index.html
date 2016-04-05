@@ -6,30 +6,15 @@
     <title>Noterious</title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="common/css/style.css" type="text/css" />
   </head>
   <body ng-controller="MainCtrl as main" ng-class="{loading:loadingView}" class="bg-{{main.currentColor}}">
     <div class="app-wrap">
       <header class="navbar-clear nav-wrap" role="banner">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a ui-sref="boards" class="navbar-brand"><img src="assets/images/logo.png" alt="noterio.us"/></a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse bg-{{main.currentColor}}">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a class="{{main.currentColor}}" href="http://angularjs.org/" target="_blank">AngularJS</a></li>
-            <li><a class="{{main.currentColor}}" href="http://firebase.com/" target="_blank">Firebase</a></li>
-            <li><a class="{{main.currentColor}}" href="https://github.com/simpulton/noterious" target="_blank">GitHub</a></li>
-            <li>
-              <a class="btn btn-link {{main.currentColor}}" ng-if="main.currentUser" ng-click="main.logout()">Logout</a>
-            </li>
-          </ul>
-        </div>
+        <nav id="top">
+            <div id="title">Feed</div>
+            <div id="add" ng-click="main.toggleMessagePopup()">+</div>
+        </nav>
       </header>
 
       <div ui-view class="content"></div>

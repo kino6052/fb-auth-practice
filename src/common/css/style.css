@@ -1,0 +1,34 @@
+@import "http://fonts.googleapis.com/css?family=Open+Sans:400,300,200,600";
+* {
+  font-family: "Open Sans"; }
+
+body {
+  margin: 0; }
+  
+  .button-red {
+  display: block;
+  font-size: 24pt;
+  border: none;
+  border-radius: 100px;
+  width: 310px;
+  height: 80px;
+  color: white;
+  margin: 40px 0 40px 0;
+  background-color: #ff3366; }
+  .button-red:active {
+    background-color: #dd2255; }
+
+.button-white {
+  display: block;
+  font-size: 24pt;
+  border: none;
+  border-radius: 100px;
+  width: 310px;
+  height: 80px;
+  color: white;
+  margin: 40px 0 40px 0;
+  background-color: transparent;
+  border: 4px solid white; }
+  .button-white:active {
+    border: 4px solid #dddddd;
+    color: #dddddd; }

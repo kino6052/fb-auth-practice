@@ -1,46 +1,47 @@
 
 <div>
-    <h1>HELLO</h1>
-    <p>{{tag}}</p>
-    <button ng-click="ctrl.toggleMessagePopup();">New Message</button>
-</div>
-
-<div class="container">
-  <div class="">
-    
-    <div class="" ng-if="ctrl.messagePopup">
-      <!-- NEW COMMENT -->
-      <div class="create board">
-        <div class="caption">
-          <form
-              name="ctrl.createForm"
-              class="create-form"
-              role="form"
-              ng-submit="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid);toggleMessagePopup()"
-              novalidate>
-            <fieldset>
-              <div>
-                <input
-                    type="text"
-                    ng-model="ctrl.newMessage.text"
-                    placeholder="Message Content"
-                    required>
-              </div>
-              <button
-                  type="submit"
-                  class="bottom-right-corner btn btn-default">
-                <span class="glyphicon glyphicon-plus"></span>
-              </button>
-              <button ng-click="ctrl.reset();ctrl.toggleMessagePopup();">Cancel</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </div>
+    <h1>PATIENTORY</h1>
+    <button ng-click="ctrl.toggleMessagePopup();" class="button-red">New Message</button>
 <div
-    class=""
+    class="message"
     ng-repeat="(key, val) in ctrl.feed"
     message='val'
     message-id="{{key}}"
     remove="ctrl.deleteBoard(key)">
 </div>
+</div>
+
+<div class="container">
+    <div class="message-popup" ng-if="ctrl.messagePopup">
+      <!-- NEW MESSAGE -->
+      <h1>POST MESSAGE</h1>
+      <div class="message-body">
+        <form
+            name="ctrl.createForm"
+            class="create-form"
+            role="form"
+            ng-submit="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid);toggleMessagePopup()"
+            novalidate>
+          <fieldset>
+            <div>
+              <textarea id="message_to_post"
+                  type="text"
+                  ng-model="ctrl.newMessage.text"
+                  placeholder="Message Content"
+                  required>
+            </div>
+            <button
+                type="submit"
+                class="bottom-right-corner btn btn-default">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <button ng-click="ctrl.reset();ctrl.toggleMessagePopup();">Cancel</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+</div>
+
+<style>
+  
+</style>

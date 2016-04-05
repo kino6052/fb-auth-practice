@@ -5,7 +5,7 @@ angular.module('patientory')
     var ctrl = this;
     ctrl.stateParams = $stateParams;
     ctrl.tag=ctrl.stateParams.tag;
-    ctrl.messagePopup = false;
+    ctrl.messagePopup = FeedModel.messagePopup;
     ctrl.loading = false;
     
     var userId   = UserModel.getCurrentUser();
@@ -21,8 +21,13 @@ angular.module('patientory')
       ctrl.newMessage.user = UserModel.userData; 
     });
     
+    $scope.$on("messagePopupUpdate", function(){
+      console.log("messagePopupUpdate")
+      ctrl.messagePopup = FeedModel.messagePopup;
+    });
+    
     ctrl.toggleMessagePopup = function() {
-      ctrl.messagePopup = !ctrl.messagePopup;
+      FeedModel.toggleMessagePopup();
     };
     
     ctrl.userStuff = UserModel.getUserData(userId);

@@ -1,9 +1,23 @@
 'use strict';
 
 angular.module('patientory.common')
-  .service('FeedModel', function ($http, UserModel, CommentModel, ENDPOINT_URI) {
+  .service('FeedModel', function ($rootScope, $http, UserModel, CommentModel, ENDPOINT_URI) {
     var service = this;
-    var encodeJSON = function(json) { return encodeURIComponent(JSON.stringify(json)) };
+    var messagePopup = false, commentPopup = false;
+    service.messagePopup, service.commentPopup;
+    
+    service.toggleMessagePopup = function(){
+      messagePopup = !messagePopup;
+      service.messagePopup = messagePopup;
+      $rootScope.$broadcast("messagePopupUpdate");
+    };
+    
+    service.toggleCommentPopup = function(){
+      commentPopup = !commentPopup;
+      service.commentPopup = commentPopup;
+      $rootScope.$broadcast("commentPopupUpdate");
+    };
+    
     function extract(result) {
       return result.data;
     }
