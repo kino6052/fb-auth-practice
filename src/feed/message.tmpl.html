@@ -1,19 +1,24 @@
-<div class="edit board">
+<div class="edit board" style="border: 1px solid grey; margin: 5px; padding: 10px;">
   <h2>{{message.user.firstName}} {{message.user.lastName}}</h2>
-  <i>{{message.email}}</i>
-  <p>{{message.text}} {{message.userData.firstName}} {{message.userData.lastName}}</p>
+  <i>{{message.user.email}}</i>
+  <p>{{message.text}}</p>
   <div class="caption">
     <div>
       <input
         type="text"
         class="medium"
         ng-model="message.newComment"
-        ng-blur="ctrl.postComment(messageId, {text: message.newComment})"
+        ng-blur="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment})"
         placeholder="Comment Content">
     </div>
-    <div ng-repeat="(key, val) in message.comments">
-      {{val}}
+    <div class="comments">
+      <h3>Comments</h3>
+      <div ng-repeat="(key, val) in message.comments">
+        <b><i>{{val.firstName}} {{val.lastName}}</i></b>
+        {{val.text}}
+      </div>  
     </div>
+    
     <a
       type="button"
       ng-click="ctrl.postComment(messageId, message.text)"

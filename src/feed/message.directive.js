@@ -1,13 +1,18 @@
 angular.module('patientory')
-  .directive('message', function($rootScope, FeedModel){
+  .directive('message', function($rootScope, FeedModel, UserModel){
     var controller = function() {
       var ctrl = this;
 
       ctrl.loading = false;
-
-      ctrl.postComment = function (messageId, comment) {
-        alert("postComment(" + messageId + ', ' + comment);
-        FeedModel.comment(messageId, comment)
+      ctrl.getFirstName = function () {
+        return UserModel.userData.firstName;
+      };
+      ctrl.getLastName = function () {
+        return UserModel.userData.lastName;
+      };
+      ctrl.postComment = function (messageId, commentObject) {
+        alert("postComment(" + messageId + ', ' + commentObject);
+        FeedModel.comment(messageId, commentObject)
           .then(function(result){
             $rootScope.$broadcast('updateFeed');
           });
