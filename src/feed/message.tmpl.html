@@ -1,16 +1,14 @@
+<div ng-if="ctrl.commentPopup" class="comment-popup">
+  <h2>POST COMMENT</h2>
+  <textarea id="comment_to_post" ng-model="$parent.message.newComment" placeholder="Your Comment..."/>
+  <button ng-click="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment});ctrl.toggleCommentPopup();" class="button-red">Submit</button>
+</div>
 <div class="edit board" style="border: 1px solid grey; margin: 5px; padding: 10px;">
   <h2>{{message.user.firstName}} {{message.user.lastName}}</h2>
   <i>{{message.user.email}}</i>
   <p>{{message.text}}</p>
   <div class="caption">
-    <div>
-      <input
-        type="text"
-        class="medium"
-        ng-model="message.newComment"
-        ng-blur="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment})"
-        placeholder="Comment Content">
-    </div>
+    <button class="button-red" ng-click="ctrl.toggleCommentPopup()">New Comment</button>
     <div class="comments">
       <h3>Comments</h3>
       <div ng-repeat="(key, val) in message.comments">
@@ -28,3 +26,8 @@
     <span ng-show="ctrl.loading" class="glyphicon glyphicon-refresh"></span>
   </div>
 </div>
+<style>
+  .caption {
+    background-color: grey;
+  }
+</style>

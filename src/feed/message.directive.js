@@ -2,8 +2,9 @@ angular.module('patientory')
   .directive('message', function($rootScope, FeedModel, UserModel){
     var controller = function() {
       var ctrl = this;
-
+      ctrl.commentPopup = false;
       ctrl.loading = false;
+      
       ctrl.getFirstName = function () {
         return UserModel.userData.firstName;
       };
@@ -17,6 +18,10 @@ angular.module('patientory')
             $rootScope.$broadcast('updateFeed');
           });
       };
+      
+      ctrl.toggleCommentPopup = function(){
+        ctrl.commentPopup = !ctrl.commentPopup;
+      }
 
       ctrl.updateMessage = function (messageId, message) {
         ctrl.loading = true;
