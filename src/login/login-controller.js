@@ -17,7 +17,7 @@ angular.module('patientory')
           email: login.user.email,
           password: login.user.password,
       })
-      .then(onLogin)
+      .then(onRegister)
       .then(onSuccess)
       .catch(onError)
       .finally();
@@ -33,15 +33,31 @@ angular.module('patientory')
       .catch(onError)
       .finally(onCompletion);
     }
+    
+    function onRegister() {
+      console.log("onRegister in the Login Controller");
+      UserModel.login({
+          email: login.user.email,
+          password: login.user.password
+      })
+      .then(function(result){
+        console.log("RESULT");
+        console.log(result);
+        UserModel.saveUserInfo(UserModel.getCurrentUser(), login.user)
+          .then(function(response){
+            UserModel.getUserData(UserModel.getCurrentUser());
+          });
+      })
+      .catch(onError)
+      .finally(onCompletion);
+    }
 
     function onSuccess(result) {
       console.log("onSuccess in the Login Controller");
       console.log("RESULTS: " + JSON.stringify(result));
-      UserModel.userObject = result;
       console.log("onRegistrationCompletion");
       //login.user.uid = UserModel.userObject.uid;
-      login.user.userData = result;
-      UserModel.create(login.user);
+      //UserModel.create(login.user);
       $state.go('feed');
     }
 
@@ -53,9 +69,6 @@ angular.module('patientory')
       login.reset();
     }
     
-    function onRegistrationCompletion() {
-      
-    }
 
     login.submit = function (user, isValid, isRegistering) {
       if (isValid) {

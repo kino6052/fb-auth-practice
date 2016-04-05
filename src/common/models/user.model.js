@@ -3,11 +3,17 @@
 // GET USER OBJECT BY USER ID: https://torrid-torch-3843.firebaseio.com/users.json?orderBy=%22userData/uid%22&equalTo=%22db55c713-12ab-44f4-907a-97bdd0bf68fb%22
 
 angular.module('patientory.common')
-  .service('UserModel', function ($http, $rootScope, Auth, ENDPOINT_URI) {
+  .service('UserModel', function ($http, $state, $rootScope, Auth, ENDPOINT_URI) {
     var service = this;
     var currentUser = null;
     var userObject = {};
-
+    
+    function getValue(object){
+      for (var key in object){
+        return object[key];
+      }
+    }
+    
     function extract(result) {
       return result.data;
     }
@@ -19,7 +25,9 @@ angular.module('patientory.common')
     function getUrlForId(userId) {
       return ENDPOINT_URI + 'users/' + userId + '.json';
     }
-
+    
+    service.userData001 = {};
+    
     service.all = function () {
       return $http.get(getUrl()).then(extract);
     };
@@ -33,11 +41,11 @@ angular.module('patientory.common')
     };
     
     service.createFromId = function (id, user) {
-      return $http.post(getUrlForId(id), user).catch(function(err){console.log(err);}).then(extract);
+      return $http.post(getUrlForId(id), user).catch(function(err){console.log(err);});
     };
 
-    service.saveUserInfo = function(user){
-      service.create(user);  
+    service.saveUserInfo = function(id, user){
+      return service.createFromId(id, user);  
     };
     
     service.getEmail = function(userObject) {
@@ -57,8 +65,19 @@ angular.module('patientory.common')
     
     service.getUserData = function (userId) {
       // TODO: Implement Safe Search of the Properties
-      return $http.get(ENDPOINT_URI + 'users.json?orderBy=' + JSON.stringify("userData/uid") + '&equalTo=' + JSON.stringify(userId)).then(function(response){service.userData = response.data; $rootScope.$broadcast("userData")})
-    }
+      console.log("GET USER DATA");
+      
+      return $http.get(ENDPOINT_URI + 'users/' + userId + '.json').then(function(response){
+            service.userData = getValue(response.data);
+            console.log("$onAuth");
+            console.log(response.data);
+            $rootScope.$broadcast("userData");
+            $state.go('feed');
+          })
+          .catch(function(err){
+            console.log(err);
+          });
+    };
     
     service.getCurrentUser = function () {
       // TODO: Implement Safe Search of the Properties

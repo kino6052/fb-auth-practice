@@ -17,7 +17,7 @@ angular.module('patientory')
     }
     
     $scope.$on("userData", function(){
-      UserModel.userData = getValue(UserModel.userData);
+      console.log(UserModel.userData);
       ctrl.newMessage.user = UserModel.userData; 
     });
     
