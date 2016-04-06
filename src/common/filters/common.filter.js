@@ -2,11 +2,11 @@ angular.module('patientory')
     .filter('reverse', function() {
       return function(items) {
         var array = [];
+        console.log("ITEMS");
+        console.log(items);
         for (var item in items){
-            console.log(item);
-            var object = {};
-            object[item] = items[item];
-            array.unshift(object);
+            console.log("Test");
+            array.unshift(items[item]);
         }
         console.log(array);
         return array;

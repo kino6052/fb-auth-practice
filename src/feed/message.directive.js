@@ -8,9 +8,11 @@ angular.module('patientory')
       ctrl.getFirstName = function () {
         return UserModel.userData.firstName;
       };
+      
       ctrl.getLastName = function () {
         return UserModel.userData.lastName;
       };
+      
       ctrl.postComment = function (messageId, commentObject) {
         alert("postComment(" + messageId + ', ' + commentObject);
         FeedModel.comment(messageId, commentObject)
@@ -21,7 +23,11 @@ angular.module('patientory')
       
       ctrl.toggleCommentPopup = function(){
         ctrl.commentPopup = !ctrl.commentPopup;
-      }
+      };
+      
+      ctrl.convertToArray = function(object) {
+        return FeedModel.convertToArray(object);
+      };
 
       ctrl.updateMessage = function (messageId, message) {
         ctrl.loading = true;

@@ -107,19 +107,19 @@
     <div class="comments">
       <h3>Comments</h3>
       <div class="comment">
-        <div ng-repeat="(key, val) in message.comments">
-          <div class="comment-header">
-            <div class="comment-name">
-              <h2>{{val.firstName}} {{val.lastName}}</h2>
-              <p>{{val.user.email}}</p>
+        
+          <div ng-repeat="(key, val) in message.comments | reverse">
+            <div class="comment-header">
+              <div class="comment-name">
+                <h2>{{val.firstName}} {{val.lastName}}</h2>
+                <p>{{val.user.email}}</p>
+              </div>
             </div>
-            
-          </div>
-          <div class="message-body">
-              {{val.text}}
-          </div>
-          
-        </div>          
+            <div class="message-body">
+                {{val.text}}
+            </div>
+          </div>          
+        
       </div>
     </div>
   </div>

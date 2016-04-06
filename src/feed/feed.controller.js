@@ -58,6 +58,7 @@ angular.module('patientory')
       FeedModel.equalTo(ctrl.tag)
         .then(function (result) {
           ctrl.feed = (result !== 'null') ? result : {};
+          ctrl.feed = FeedModel.convertToArray(ctrl.feed);
         }, function () {
           ctrl.resetForm();
         });

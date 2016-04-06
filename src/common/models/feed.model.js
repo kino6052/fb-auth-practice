@@ -18,6 +18,16 @@ angular.module('patientory.common')
       $rootScope.$broadcast("commentPopupUpdate");
     };
     
+    service.convertToArray = function(items) {
+        var array = [];
+        for (var item in items){
+            var object = {};
+            object[item] = items[item];
+            array.unshift(object);
+        }
+        return array;
+    };
+    
     function extract(result) {
       return result.data;
     }
