@@ -8,6 +8,11 @@ angular.module('patientory')
 
     login.user = {
       email: '',
+      dob: '',
+      firstName: '',
+      lastName: '',
+      vision: '',
+      height: '',
       password: '',
       register: false
     };

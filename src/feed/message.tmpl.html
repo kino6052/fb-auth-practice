@@ -1,6 +1,8 @@
 <style>
     .message-container {
+      width: 100%;
       border-bottom: 1px solid grey; 
+      border-top: 1px solid grey; 
       background-color: white;
       padding: 10px;
     }
@@ -166,15 +168,13 @@
   <div class="message-body">
     <p>{{message.text}}</p>
     <div class="tags">
-      <div>
-        {{message.tag}}
-      </div>
+      <span class="label label-danger" style="background-color: #ff3366;">{{message.tag}}</span>
     </div>
   </div>
   
   <div class="buttons">
     <div class="social-buttons">
-      <button class="btn btn-primary" ng-click="ctrl.toggleCommentPopup()"><span class="glyphicon glyphicon-pencil"></span></button>
+      <button class="btn btn-primary" ng-click="ctrl.toggleCommentPopup()" style="background-color: transparent; border: 1px solid grey; color: grey;"><span class="glyphicon glyphicon-pencil" ></span></button>
     </div>
   </div>
   

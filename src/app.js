@@ -7,9 +7,19 @@ angular.module('patientory', [
 ])
   .constant('ENDPOINT_URI', 'https://torrid-torch-3843.firebaseio.com/')
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/feed?tag=t1d');
+    $urlRouterProvider.otherwise('/landing');
 
     $stateProvider
+      .state('landing', {
+        url:'/landing',
+        templateUrl: 'landing/landing.tmpl.html'
+      })
+      .state('register', {
+        url:'/register',
+        templateUrl: 'login/register.tmpl.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .state('login', {
         url:'/login',
         templateUrl: 'login/login.tmpl.html',

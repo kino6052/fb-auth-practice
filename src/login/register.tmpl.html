@@ -1,0 +1,81 @@
+<div class="login-wrap">
+  <form
+    class="form-signin"
+    role="form"
+    name="login.loginForm"
+    ng-submit="login.submit(login.user, login.loginForm.$valid, true)"
+    novalidate>
+
+    <div class="alert alert-danger" ng-if="login.error" role="alert">
+      <p>{{login.error}}</p>
+    </div>
+
+    <fieldset>
+      <div>
+        <input
+          type="name"
+          ng-model="login.user.firstName"
+          name="firstName"
+          placeholder="FIRST NAME"
+          required>
+      </div>
+      
+      <div>
+        <input
+          type="name"
+          ng-model="login.user.lastName"
+          name="lastName"
+          placeholder="LAST NAME"
+          required>
+      </div>
+      
+     <div>
+         <input class="info" type="date" id="dob" ng-model="login.user.dob" placeholder="DATE OF BIRTH">   
+     </div>
+     <div>
+         <input class="info" type="phone" id="mobile" ng-model="login.user.mobile" placeholder="MOBILE PHONE">
+     </div>
+     <div>
+         <input class="info" type="text" id="location" ng-model="login.user.location" placeholder="LOCATION">
+     </div>
+     <div>
+         <input class="info" type="number" id="height" ng-model="login.user.height" placeholder="HEIGHT">
+     </div>
+     <div>
+         <input class="info" type="text" id="vision" ng-model="login.user.vision" placeholder="VISION">
+     </div>          
+     <div>
+         <input class="info" type="text" id="interests" ng-model="login.user.interests" placeholder="INTERESTS">
+     </div>
+     <div>
+         <input class="info" id="condition" ng-model="login.user.condition" placeholder="MEDICAL CONDITION">
+     </div>
+          
+
+      
+      <div>
+        <input
+          type="email"
+          ng-model="login.user.email"
+          name="email"
+          placeholder="EMAIL"
+          required>
+      </div>
+
+      <div>
+        <input
+          type="password"
+          ng-model="login.user.password"
+          placeholder="PASSWORD"
+          required>
+      </div>
+
+      <button type="submit" class="button-red"
+        ng-disabled="login.loading">
+        <span class="glyphicon glyphicon-ok"></span>
+        Sign In
+        <span ng-show="login.loading" class="glyphicon glyphicon-refresh"></span>
+      </button>
+    </fieldset>
+  </form>
+</div>

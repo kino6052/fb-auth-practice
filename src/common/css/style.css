@@ -5,7 +5,34 @@
 body {
   margin: 0; }
   
-  .button-red {
+/* INTRO PAGE */
+#background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../assets/imgs/bg.png");
+  background-size: cover; }
+
+.logo {
+  position: absolute;
+  top: 10%;
+  position: absolute;
+  left: 50%;
+  width: 150px;
+  transform: translate(-50%, 0); }
+
+#typography {
+  margin-top: 180px;
+  width: 70%; }
+
+.container, .button-container {
+  position: absolute;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0); }
+
+.button-red {
   display: block;
   font-size: 24pt;
   border: none;
@@ -33,6 +60,8 @@ body {
     border: 4px solid #dddddd;
     color: #dddddd; }
 
+
+
 nav#top {
   position: fixed;
   height: 9%;
@@ -46,7 +75,8 @@ nav#top {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 24pt; }
+    font-size: 14pt;
+    font-weight: bold;}
 
 nav#bottom {
   position: fixed;
@@ -63,3 +93,37 @@ nav#bottom {
   font-size: 20pt;
   right: 10px;
   top: 10px;}
+  
+/* FORMS */
+input {
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 0 0 0 20px;
+  margin: 0;
+  border: 0;
+  border: none;
+  border-bottom: 2px grey solid;
+  height: 100px;
+  width: 600px;
+  font-size: 24pt !important; }
+
+.input-group {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0); }
+
+fieldset {
+  width: 100%;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+body {
+  margin-top: 200px;
+}

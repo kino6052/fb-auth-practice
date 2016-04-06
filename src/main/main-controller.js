@@ -31,7 +31,9 @@ angular.module('patientory')
     });
     
     main.isNavEnabled = function(){
-  		if ($state.$current.name === "feed") { 
+  		if ($state.$current.name === "feed"   ||
+  		    $state.$current.name === "login"  ||
+  		    $state.$current.name === "register") { 
   			return true;
   		}
   		else {
