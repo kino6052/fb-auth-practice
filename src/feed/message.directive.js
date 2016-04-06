@@ -58,6 +58,6 @@ angular.module('patientory')
       controller: controller,
       controllerAs: 'ctrl',
       bindToController: true
-    }
+    };
   })
 ;
