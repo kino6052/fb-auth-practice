@@ -88,7 +88,7 @@ nav#top {
   background-color: #ffffff;
   color: #444;
   top: 0;
-  border-bottom: 2px solid grey; }
+  box-shadow: 0 1px 3px #c0c0c0; }
   nav#top #title {
     position: absolute;
     top: 50%;
@@ -104,7 +104,7 @@ nav#bottom {
   background-color: #ffffff;
   color: #444;
   bottom: 0;
-  border-top: 2px solid grey; }
+  box-shadow: 0 -1px 3px #c0c0c0; }
   
 #add {
   position: fixed;
