@@ -185,7 +185,7 @@
   <div class="comment">
       <div ng-repeat="(key, val) in message.comments | reverse">
         <div class="comment-header">
-          <div class="message-pic" style="background-image: url('{{message.user.url}}');"></div>
+          <div class="message-pic" style="background-image: url('{{val.user.url}}');"></div>
           <div class="comment-name">
             <h2>{{val.firstName}} {{val.lastName}}</h2>
             <p>{{val.user.email}}</p>

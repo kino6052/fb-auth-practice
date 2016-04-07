@@ -41,6 +41,26 @@
     bottom: 40px; }
 
 
+  .tag-select-container {
+    border-bottom: 1px solid #c0c0c0;
+  }
+  
+  .tag-select-container .tag-select,
+  .tag-select-container .tag-select-header {
+    display: inline-block;
+  } 
+  
+  .tag-select select {
+    font-size: 12pt;
+    padding: 20px;
+    border: none;
+    
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
 
   
   
@@ -62,6 +82,19 @@
   <h1>POST MESSAGE</h1>
   <button ng-click="ctrl.reset();ctrl.toggleMessagePopup();" class="button-gray" id="cancel">CANCEL</button>
   <button ng-click="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid);ctrl.toggleMessagePopup()" class="button-red" id="submit">SUBMIT</button>
+  <div class="tag-select-container">
+    <div class="tag-select-header" style="display: inline-block;">
+      <h2>TAG</h2>
+    </div>
+    <div class="tag-select" style="display: inline-block;">
+      <select style="" ng-model="ctrl.newMessage.tag">
+        <option>T1D</option>
+        <option>Living with Diabetes</option>
+        <option>New Mom</option>
+        <option>Motherhood</option>
+      </select>      
+    </div>
+  </div>
   <div class="message-body">
     <form
         name="ctrl.createForm"
