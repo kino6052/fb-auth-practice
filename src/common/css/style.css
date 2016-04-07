@@ -34,33 +34,52 @@ body {
 
 .button-red {
   display: block;
-  font-size: 24pt;
+  font-size: 16pt;
   border: none;
   border-radius: 100px;
-  width: 310px;
-  height: 80px;
+  width: 155px;
+  height: 40px;
   color: white;
-  margin: 40px 0 40px 0;
+  margin: 20px 0 20px 0;
   background-color: #ff3366; }
   .button-red:active {
     background-color: #dd2255; }
 
-.button-white {
+
+.button-gray {
   display: block;
-  font-size: 24pt;
+  font-size: 16pt;
   border: none;
   border-radius: 100px;
-  width: 310px;
-  height: 80px;
+  width: 155px;
+  height: 40px;
+  color: gray;
+  margin: 20px 0 80px 0;
+  background-color: transparent;
+  border: 4px solid gray; }
+  .button-white:active {
+    border: 4px solid #dddddd;
+    color: #dddddd; }
+
+
+.button-white {
+  display: block;
+  font-size: 16pt;
+  border: none;
+  border-radius: 100px;
+  width: 155px;
+  height: 40px;
   color: white;
-  margin: 40px 0 40px 0;
+  margin: 20px 0 40px 0;
   background-color: transparent;
   border: 4px solid white; }
   .button-white:active {
     border: 4px solid #dddddd;
     color: #dddddd; }
 
-
+nav {
+  z-index: 100;
+}
 
 nav#top {
   position: fixed;
@@ -94,6 +113,27 @@ nav#bottom {
   right: 10px;
   top: 10px;}
   
+#menu-outer {
+  height: 84px;
+  background: url(images/bar-bg.jpg) repeat-x; }
+
+.table {
+  display: table;
+  /* Allow the centering to work */
+  margin: 0 auto;
+  text-align: center;
+  width: 100%; }
+
+div#horizontal-list {
+  min-width: 100%;
+   }
+
+div#horizontal-list div {
+  margin: 20px;
+  
+  display: inline-block;
+   }
+  
 /* FORMS */
 input {
   overflow: auto;
@@ -101,14 +141,14 @@ input {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  padding: 0 0 0 20px;
-  margin: 0;
+  padding: 0 20px 0 20px;
+  margin: 0 20px 0 20px;
   border: 0;
   border: none;
   border-bottom: 2px grey solid;
   height: 100px;
   width: 100%;
-  font-size: 24pt !important; }
+  font-size: 12pt !important; }
 
 .input-group {
   position: absolute;
@@ -122,14 +162,20 @@ fieldset {
 .center {
   width: 100%;
   text-align: center;
-}
-
-.submit {
-    margin-left: -100px;
-    left: 50%;
-    position: absolute;
-}
-
-body {
   margin-top: 100px;
 }
+
+.button-red#login, .button-red#register {
+    margin-left: 50px!important;
+    transform:translate(50%,0)!important;
+}
+.login-wrap {
+  width: 100%;
+  text-align: center;
+}
+
+.login-wrap h1 {
+  font-size: 16pt;
+  font-weight: bold;
+}
+

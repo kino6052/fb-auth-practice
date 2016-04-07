@@ -12,7 +12,7 @@
     <div class="app-wrap">
       <header class="navbar-clear nav-wrap" role="banner">
         <nav id="top" ng-if="main.isNavEnabled()">
-            <button ng-click="main.logout();">Logout</button>
+            
             <div id="title">Feed</div>
             <div id="add" ng-click="main.toggleMessagePopup()"><span class="glyphicon glyphicon-plus"></span></div>
         </nav>
@@ -22,7 +22,18 @@
 
       <div class="modal"></div>
 
-      <color-picker></color-picker>
+      <nav id="bottom" ng-if="main.isNavEnabled()">
+          <div id="menu-outer">
+            <div class="table">
+              <div id="horizontal-list">
+                <div ng-click=""><span class="glyphicon glyphicon-leaf"></span></div>
+                <div ng-click=""><span class="glyphicon glyphicon-leaf"></span></div>
+                <div ng-click=""><span class="glyphicon glyphicon-leaf"></span></div>
+                <div ng-click="main.logout()"><span class="glyphicon glyphicon-leaf"></span></div>
+              </div>
+            </div>
+          </div>
+      </nav>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

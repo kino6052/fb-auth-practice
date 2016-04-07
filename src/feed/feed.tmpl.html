@@ -2,6 +2,7 @@
   /* FEED */
 .patientory-container {
   background-color: #f8f8f8;
+  margin-top: 100px;
 }
 .message-popup {
   text-align: center;
@@ -10,26 +11,39 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100%; }
+  height: 100vh; }
   .message-popup h1, .message-popup h2 {
-    font-size: 30pt;
+    font-size: 16pt;
     text-align: center; }
   .message-popup textarea {
-    font-size: 30pt;
-    width: 600px;
-    height: 80%;
+    font-size: 12pt;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
     border: none;
     overflow: auto;
     outline: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
-  .message-popup button {
+  
+  .message-popup button{
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+    bottom: 40px;
+     }
+  
+  .message-popup button #submit{
+    bottom: 80px; }
+    
+  .message-popup button #cancel {
     bottom: 40px; }
 
+
+
+  
+  
 </style>
 <div class="patientory-container">
   <div ng-repeat="message in ctrl.feed">
@@ -46,8 +60,8 @@
 <div class="message-popup" ng-if="ctrl.messagePopup">
   <!-- NEW MESSAGE -->
   <h1>POST MESSAGE</h1>
-  <button ng-click="ctrl.reset();ctrl.toggleMessagePopup();">Cancel</button>
-  <button ng-click="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid);ctrl.toggleMessagePopup()" class="button-red">Submit</button>
+  <button ng-click="ctrl.reset();ctrl.toggleMessagePopup();" class="button-gray" id="cancel">CANCEL</button>
+  <button ng-click="ctrl.postMessage(ctrl.newMessage, ctrl.createForm.$valid);ctrl.toggleMessagePopup()" class="button-red" id="submit">SUBMIT</button>
   <div class="message-body">
     <form
         name="ctrl.createForm"
