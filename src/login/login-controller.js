@@ -51,7 +51,8 @@ angular.module('patientory')
         UserModel.saveUserInfo(UserModel.getCurrentUser(), login.user)
           .then(function(response){
             UserModel.getUserData(UserModel.getCurrentUser());
-          });
+          })
+          
       })
       .catch(onError)
       .finally(onCompletion);

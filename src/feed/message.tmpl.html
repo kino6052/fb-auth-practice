@@ -159,7 +159,7 @@
 </div>
 <div class="message-container">
   <div class="message-header" >
-    <div class="message-pic" style="background-image: url('{{message.user.url}}');">
+    <div class="message-pic" style="background-image: url('{{ctrl.userData.image}}');">
     </div>
     <div class="message-name">
       <h2>{{message.user.firstName}} {{message.user.lastName}}</h2>
@@ -185,10 +185,13 @@
   <div class="comment">
       <div ng-repeat="(key, val) in message.comments | reverse">
         <div class="comment-header">
-          <div class="message-pic" style="background-image: url('{{val.user.url}}');"></div>
+          <div class="message-pic">
+            <img src="{{val.user.image}}">
+          </div>
           <div class="comment-name">
             <h2>{{val.firstName}} {{val.lastName}}</h2>
             <p>{{val.user.email}}</p>
+            <i>{{val.user.date}}</i>
             <div class="comment-body">
                 {{val.text}}
             </div>

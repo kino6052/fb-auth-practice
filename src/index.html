@@ -2,7 +2,7 @@
 <html ng-app="patientory">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
     <title>Patientory</title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -26,9 +26,9 @@
           <div id="menu-outer">
             <div class="table">
               <div id="horizontal-list">
-                <div ng-click=""><span class="glyphicon glyphicon-user"></span></div>
-                <div ng-click=""><span class="glyphicon glyphicon-globe"></span></div>
-                <div ng-click=""><span class="glyphicon glyphicon-envelope"></span></div>
+                <div ui-sref="profile"><span class="glyphicon glyphicon-user"></span></div>
+                <div ui-sref="feed"><span class="glyphicon glyphicon-globe"></span></div>
+                <div ui-sref=""><span class="glyphicon glyphicon-envelope"></span></div>
                 <div ng-click="main.logout()"><span class="glyphicon glyphicon-off"></span></div>
               </div>
             </div>
@@ -45,6 +45,7 @@
     <script src="//cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
     <script src="vendor/angular-ui-router.min.js"></script>
     <script src="vendor/angularfire.js"></script>
+    
     <script src="app.js"></script>
     
     <script src="common/common.js"></script>
@@ -52,10 +53,16 @@
     <script src="common/models/user.model.js"></script>
     <script src="common/models/feed.model.js"></script>
     <script src="common/models/comment.model.js"></script>
+    <script src="common/models/profile.model.js"></script>
+    
     <script src="common/services/auth-service.js"></script>
     <script src="common/filters/common.filter.js"></script>
+    
     <script src="feed/feed.controller.js"></script>
     <script src="feed/message.directive.js"></script>
+    
+    <script src="profile/profile.controller.js"></script>
+    
     <script src="login/login-controller.js"></script>
     <script src="main/main-controller.js"></script>
   </body>

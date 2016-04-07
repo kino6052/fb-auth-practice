@@ -27,7 +27,7 @@ angular.module('patientory')
         UserModel.setCurrentUser(authData.uid);
         main.currentUser = authData.uid;
         UserModel.getUserData(authData.uid);
-        
+        $state.$go("profile");
       } else {
         main.currentUser = null;
         main.logout();
@@ -35,7 +35,7 @@ angular.module('patientory')
     });
     
     main.isNavEnabled = function(){
-  		if ($state.$current.name === "feed") { 
+  		if ($state.$current.name === "feed" || $state.$current.name === "profile" ) { 
   			return true;
   		}
   		else {

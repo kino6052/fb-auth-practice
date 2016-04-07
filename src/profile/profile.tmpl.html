@@ -1,0 +1,45 @@
+<div class="">
+    <br><br><br>
+    <div class="row">
+        <div class="col-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <center>PROFILE PICTURE</center>
+                    <img src="{{profile.userData.image}}" style="width: 100%"/>
+                    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+                    <button ng-click="profile.submit();">SUBMIT</button>
+                    <div id="imgTest"></div>
+                </div>
+                <div class="panel-body">
+                    <b class="pull-left parameter">NAME</b>
+                    <b class="pull-right data">{{profile.userData.firstName}} {{profile.userData.lastName}}</b>
+                </div>
+                <hr>
+                <div class="panel-body">
+                    <b class="pull-left parameter">CITY</b>
+                    <b class="pull-right data">{{profile.userData.location}}</b>
+                </div>
+                <hr>
+                <div class="panel-body">
+                    <b class="pull-left parameter">ABOUT</b>
+                    <p class="pull-right data">{{profile.userData.about}}</p>
+                </div>
+                <hr>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <b class="pull-left parameter">EMAIL</b>
+                    <b class="pull-right data">{{profile.userData.email}}</b>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <b class="pull-left parameter">MEDICAL INFO</b>
+                </div>
+                <div class="panel-body">
+                    <b class="pull-left parameter">FAMILY INFO</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

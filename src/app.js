@@ -14,6 +14,12 @@ angular.module('patientory', [
         url:'/landing',
         templateUrl: 'landing/landing.tmpl.html'
       })
+      .state('profile', {
+        url:'/profile',
+        templateUrl: 'profile/profile.tmpl.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile'
+      })
       .state('register', {
         url:'/register',
         templateUrl: 'login/register.tmpl.html',

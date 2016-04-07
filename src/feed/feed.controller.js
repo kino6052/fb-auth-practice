@@ -21,9 +21,8 @@ angular.module('patientory')
       ctrl.getFeed();
     });
     
-    $scope.$on("userData", function(){
-      console.log(UserModel.userData);
-      ctrl.newMessage.user = UserModel.userData; 
+    $scope.$on("userData", function(event, data){
+      ctrl.newMessage.user = data; 
     });
     
     $scope.$on("messagePopupUpdate", function(){
@@ -53,6 +52,7 @@ angular.module('patientory')
     
     ctrl.newMessage = {
       userId: userId,
+      date: new Date(),
       user: {},
       userEmail: UserModel.getEmail(),
       text: '',

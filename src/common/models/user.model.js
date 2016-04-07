@@ -26,8 +26,6 @@ angular.module('patientory.common')
       return ENDPOINT_URI + 'users/' + userId + '.json';
     }
     
-    service.userData001 = {};
-    
     service.all = function () {
       return $http.get(getUrl()).then(extract);
     };
@@ -63,6 +61,11 @@ angular.module('patientory.common')
     
     service.userData = {};
     
+    service.userData001 = {};
+    $rootScope.$on("userData", function(event, data){
+      service.userData001 = data;
+    });
+    
     service.getUserData = function (userId) {
       // TODO: Implement Safe Search of the Properties
       console.log("GET USER DATA");
@@ -71,12 +74,25 @@ angular.module('patientory.common')
             service.userData = getValue(response.data);
             console.log("$onAuth");
             console.log(response.data);
-            $rootScope.$broadcast("userData");
-            $state.go('feed');
+            $rootScope.$broadcast("userData", response.data);
           })
           .catch(function(err){
             console.log(err);
           });
+    };
+    
+    service.saveImage = function(data) {
+      var userData = service.userData;
+      userData.image = data;
+      $http.put(getUrlForId(service.getCurrentUser()), userData)
+        .then(function(reponse){
+          service.userData.image = data;
+          $rootScope.$broadcast("userData");
+        })
+        .catch(function(err){
+          console.log(err);
+        })
+      ;
     };
     
     service.getCurrentUser = function () {
