@@ -107,7 +107,7 @@ input {
   border: none;
   border-bottom: 2px grey solid;
   height: 100px;
-  width: 600px;
+  width: 100%;
   font-size: 24pt !important; }
 
 .input-group {
@@ -124,6 +124,12 @@ fieldset {
   text-align: center;
 }
 
+.submit {
+    margin-left: -100px;
+    left: 50%;
+    position: absolute;
+}
+
 body {
-  margin-top: 200px;
+  margin-top: 100px;
 }

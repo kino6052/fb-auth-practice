@@ -32,18 +32,15 @@
 
 </style>
 <div class="patientory-container">
-    <h1>PATIENTORY</h1>
-
-<div ng-repeat="message in ctrl.feed">
-   <div
-    class="message"
-    ng-repeat="(key, val) in message"
-    message='val'
-    message-id="{{key}}"
-    remove="ctrl.deleteBoard(key)">
-  </div> 
-</div>
-
+  <div ng-repeat="message in ctrl.feed">
+     <div
+      class="message"
+      ng-repeat="(key, val) in message"
+      message='val'
+      message-id="{{key}}"
+      remove="ctrl.deleteBoard(key)">
+    </div> 
+  </div>
 </div>
 
 <div class="message-popup" ng-if="ctrl.messagePopup">

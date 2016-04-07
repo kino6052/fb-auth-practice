@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('patientory')
-  .controller('FeedCtrl', function ($rootScope, $scope, $stateParams, FeedModel, UserModel, CommentModel) {
+  .controller('FeedCtrl', function ($rootScope, $scope, $stateParams, FeedModel, UserModel, CommentModel, ENDPOINT_URI) {
     var ctrl = this;
     ctrl.stateParams = $stateParams;
     ctrl.tag=ctrl.stateParams.tag;
@@ -15,6 +15,11 @@ angular.module('patientory')
         return object[key];
       }
     }
+    
+    var firebaseRef = new Firebase(ENDPOINT_URI + 'messages');
+    firebaseRef.on('value', function(){
+      ctrl.getFeed();
+    });
     
     $scope.$on("userData", function(){
       console.log(UserModel.userData);
@@ -36,7 +41,7 @@ angular.module('patientory')
       userId: userId,
       user: {},
       userEmail: UserModel.getEmail(),
-      text: UserModel.getEmail(UserModel.userObject),
+      text: '',
       isPublic: false
     };
     
