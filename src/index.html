@@ -12,7 +12,7 @@
     <div class="app-wrap">
       <header class="navbar-clear nav-wrap" role="banner">
         <nav id="top" ng-if="main.isNavEnabled()">
-            
+            <div id="search" ng-click="main.toggleSearchPopup()"><span class="glyphicon glyphicon-search"></span></div>
             <div id="title">Feed</div>
             <div id="add" ng-click="main.toggleMessagePopup()"><span class="glyphicon glyphicon-plus"></span></div>
         </nav>

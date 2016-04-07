@@ -1,15 +1,22 @@
 'use strict';
 
 angular.module('patientory.common')
-  .service('FeedModel', function ($rootScope, $http, UserModel, CommentModel, ENDPOINT_URI) {
+  .service('FeedModel', function ($rootScope, $state, $http, UserModel, CommentModel, ENDPOINT_URI) {
     var service = this;
-    var messagePopup = false, commentPopup = false;
+    var messagePopup = false, commentPopup = false, searchPopup = false;
+    
     service.messagePopup, service.commentPopup;
     
     service.toggleMessagePopup = function(){
       messagePopup = !messagePopup;
       service.messagePopup = messagePopup;
       $rootScope.$broadcast("messagePopupUpdate");
+    };
+    
+    service.toggleSearchPopup = function(){
+      searchPopup = !searchPopup;
+      service.searchPopup = searchPopup;
+      $rootScope.$broadcast("searchPopupUpdate");
     };
     
     service.toggleCommentPopup = function(){
@@ -65,9 +72,14 @@ angular.module('patientory.common')
     
     service.comment = function(messageId, comment) {
       return CommentModel.create(messageId, comment);
-    }
+    };
 
     service.destroy = function (messageId) {
       return $http.delete(getUrlForId(messageId)).then(extract);
+    };
+    
+    service.searchMessagesWithTag = function(query) {
+      service.toggleSearchPopup();
+      $state.go("feed", {tag: query});
     };
   });

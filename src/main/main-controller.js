@@ -17,6 +17,10 @@ angular.module('patientory')
     main.toggleMessagePopup = function(){
       FeedModel.toggleMessagePopup();
     };
+    
+    main.toggleSearchPopup = function(){
+      FeedModel.toggleSearchPopup();
+    };
 
     main.auth.$onAuth(function (authData) {
       if (authData) {

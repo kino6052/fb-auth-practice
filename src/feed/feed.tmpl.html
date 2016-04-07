@@ -77,6 +77,24 @@
   </div>
 </div>
 
+<div class="message-popup" ng-if="ctrl.searchPopup">
+  <h1>SEARCH TAGS</h1>
+  <div class="tag-select-container">
+    <div class="tag-select-header" style="display: inline-block;">
+      <h2>TAG</h2>
+    </div>
+    <div class="tag-select" style="display: inline-block;">
+      <select style="" ng-model="ctrl.searchQuery">
+        <option>T1D</option>
+        <option>Living with Diabetes</option>
+        <option>New Mom</option>
+        <option>Motherhood</option>
+      </select>      
+    </div>
+  </div>
+  <button ng-click="ctrl.searchMessagesWithTag(ctrl.searchQuery)" class="button-red" id="submit">SEARCH</button>
+</div>
+
 <div class="message-popup" ng-if="ctrl.messagePopup">
   <!-- NEW MESSAGE -->
   <h1>POST MESSAGE</h1>
@@ -109,9 +127,7 @@
               placeholder="Message Content"
               required>
         </div>
-        
       </fieldset>
-      
     </form>
   </div>
 </div>

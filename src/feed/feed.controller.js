@@ -31,8 +31,22 @@ angular.module('patientory')
       ctrl.messagePopup = FeedModel.messagePopup;
     });
     
+    $scope.$on("searchPopupUpdate", function(){
+      console.log("searchPopupUpdate")
+      ctrl.searchPopup = FeedModel.searchPopup;
+    });
+
+    $scope.$on('updateFeed', function() {
+      ctrl.getFeed();
+      //console.log("COMMENT POSTED EVENT");
+    });
+    
     ctrl.toggleMessagePopup = function() {
       FeedModel.toggleMessagePopup();
+    };
+    
+    ctrl.toggleSearchPopup = function() {
+      FeedModel.toggleSearchPopup();
     };
     
     ctrl.userStuff = UserModel.getUserData(userId);
@@ -45,10 +59,9 @@ angular.module('patientory')
       isPublic: false
     };
     
-    $scope.$on('updateFeed', function() {
-      ctrl.getFeed();
-      //console.log("COMMENT POSTED EVENT");
-    });
+    ctrl.searchMessagesWithTag = function (query){
+      FeedModel.searchMessagesWithTag(query);
+    };
     
     ctrl.resetForm = function () {
       ctrl.loading = false;
