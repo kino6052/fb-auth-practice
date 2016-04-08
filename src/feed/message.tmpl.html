@@ -18,7 +18,10 @@
       display: inline-block;
       width: 50px;
       height: 50px;
-      
+      color: white;
+      font-size: 18pt;
+      text-align: center;
+      line-height: 50px;
       border-radius: 100px;
       background-color: #ff3366;
       background-image: url("../../assets/imgs/face.jpg");
@@ -81,7 +84,10 @@
     display: inline-block;
     width: 40px;
     height: 40px;
-    
+    color: #ff3366;
+    font-size: 14pt;
+    text-align: center;
+    line-height: 40px;
     border-radius: 100px;
     background-image: url("../../assets/imgs/face.jpg");
     background-color: white;
@@ -160,6 +166,7 @@
 <div class="message-container">
   <div class="message-header" >
     <div class="message-pic" style="background-image: url('{{message.user.url}}');">
+      {{message.user.firstName[0]}}{{message.user.lastName[0]}}
     </div>
     <div class="message-name">
       <h2>{{message.user.firstName}} {{message.user.lastName}}</h2>
@@ -185,7 +192,9 @@
   <div class="comment">
       <div ng-repeat="(key, val) in message.comments | reverse">
         <div class="comment-header">
-          <div class="message-pic" style="background-image: url('{{val.user.url}}');"></div>
+          <div class="message-pic" style="background-image: url('{{val.user.url}}');">
+            {{val.firstName[0]}}{{val.lastName[0]}}
+          </div>
           <div class="comment-name">
             <h2>{{val.firstName}} {{val.lastName}}</h2>
             <p>{{val.user.email}}</p>
