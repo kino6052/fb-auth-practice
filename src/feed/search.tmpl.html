@@ -1,0 +1,18 @@
+<div class="message-popup">
+  <h1>SEARCH TAGS</h1>
+  <div class="tag-select-container">
+    <div class="tag-select-header" style="display: inline-block;">
+      <h2>TAG</h2>
+    </div>
+    <div class="tag-select" style="display: inline-block;">
+      <select style="" ng-model="ctrl.searchQuery">
+        <option>T1D</option>
+        <option>Living with Diabetes</option>
+        <option>New Mom</option>
+        <option>Motherhood</option>
+      </select>      
+    </div>
+  </div>
+  <button ng-click="ctrl.searchMessagesWithTag(ctrl.searchQuery)" class="button-red" id="submit">SEARCH</button>
+  <button ui-sref="feed" class="button-gray" id="cancel">CANCEL</button>
+</div>

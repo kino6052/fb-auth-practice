@@ -157,12 +157,7 @@
     transform: translate(-50%, 0);
     bottom: 40px; }
 </style>
-<div ng-if="ctrl.commentPopup" class="message-popup">
-  <h2>POST COMMENT</h2>
-  <textarea id="comment_to_post" ng-model="$parent.message.newComment" placeholder="Your Comment..."/>
-  <button ng-click="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment});ctrl.toggleCommentPopup();" class="button-red">SUBMIT</button>
-  <button ng-click="ctrl.reset();ctrl.toggleCommentPopup();" class="button-gray">CANCEL</button>
-</div>
+
 <div class="message-container">
   <div class="message-header" >
     <div class="message-pic" style="background-image: url('{{message.user.url}}');">

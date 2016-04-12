@@ -26,6 +26,24 @@ angular.module('patientory', [
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .state('search', {
+        url:'/search',
+        templateUrl: 'feed/search.tmpl.html',
+        controller: 'PostCtrl',
+        controllerAs: 'post'
+      })
+      .state('post', {
+        url:'/post',
+        templateUrl: 'feed/post.tmpl.html',
+        controller: 'PostCtrl',
+        controllerAs: 'post'
+      })
+      .state('comment', {
+        url:'/comment',
+        templateUrl: 'feed/comment.tmpl.html',
+        controller: 'PostCtrl',
+        controllerAs: 'post'
+      })
       .state('feed', {
         url:'/feed?tag',
         templateUrl: 'feed/feed.tmpl.html',

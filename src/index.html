@@ -2,7 +2,7 @@
 <html ng-app="patientory">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title>Patientory</title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -12,9 +12,9 @@
     <div class="app-wrap">
       <header class="navbar-clear nav-wrap" role="banner">
         <nav id="top" ng-if="main.isNavEnabled()">
-            <div id="search" ng-click="main.toggleSearchPopup()"><span class="glyphicon glyphicon-search"></span></div>
+            <div id="search" ui-sref="search"><span class="glyphicon glyphicon-search"></span></div>
             <div id="title">Feed</div>
-            <div id="add" ng-click="main.toggleMessagePopup()"><span class="glyphicon glyphicon-plus"></span></div>
+            <div id="add" ui-sref="post"><span class="glyphicon glyphicon-plus"></span></div>
         </nav>
       </header>
 
@@ -56,6 +56,7 @@
     <script src="common/filters/common.filter.js"></script>
     <script src="feed/feed.controller.js"></script>
     <script src="feed/message.directive.js"></script>
+    <script src="feed/post.controller.js"></script>
     <script src="login/login-controller.js"></script>
     <script src="main/main-controller.js"></script>
   </body>

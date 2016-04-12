@@ -72,7 +72,6 @@ angular.module('patientory.common')
             console.log("$onAuth");
             console.log(response.data);
             $rootScope.$broadcast("userData");
-            $state.go('feed');
           })
           .catch(function(err){
             console.log(err);
