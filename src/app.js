@@ -55,6 +55,17 @@ angular.module('patientory', [
           }]
         }
       })
+      .state('profile', {
+        url:'/profile',
+        templateUrl: 'profile/profile.tmpl.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile',
+        resolve: {
+          'currentUser': ['Auth', function (Auth) {
+            return Auth.$requireAuth();
+          }]
+        }
+      })
     ;
   })
   .run(function ($rootScope, $state) {

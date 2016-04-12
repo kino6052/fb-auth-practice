@@ -12,9 +12,9 @@
     <div class="app-wrap">
       <header class="navbar-clear nav-wrap" role="banner">
         <nav id="top" ng-if="main.isNavEnabled()">
-            <div id="search" ui-sref="search"><span class="glyphicon glyphicon-search"></span></div>
-            <div id="title">Feed</div>
-            <div id="add" ui-sref="post"><span class="glyphicon glyphicon-plus"></span></div>
+            <div id="search" ng-if="main.menuName==='feed'" ui-sref="search"><span class="glyphicon glyphicon-search"></span></div>
+            <div id="title">{{main.menuName}}</div>
+            <div id="add" ng-if="main.menuName==='feed'" ui-sref="post"><span class="glyphicon glyphicon-plus"></span></div>
         </nav>
       </header>
 
@@ -26,8 +26,8 @@
           <div id="menu-outer">
             <div class="table">
               <div id="horizontal-list">
-                <div ng-click=""><span class="glyphicon glyphicon-user"></span></div>
-                <div ng-click=""><span class="glyphicon glyphicon-globe"></span></div>
+                <div ui-sref="profile"><span class="glyphicon glyphicon-user"></span></div>
+                <div ui-sref="feed"><span class="glyphicon glyphicon-globe"></span></div>
                 <div ng-click=""><span class="glyphicon glyphicon-envelope"></span></div>
                 <div ng-click="main.logout()"><span class="glyphicon glyphicon-off"></span></div>
               </div>
@@ -57,6 +57,7 @@
     <script src="feed/feed.controller.js"></script>
     <script src="feed/message.directive.js"></script>
     <script src="feed/post.controller.js"></script>
+    <script src="profile/profile.controller.js"></script>
     <script src="login/login-controller.js"></script>
     <script src="main/main-controller.js"></script>
   </body>

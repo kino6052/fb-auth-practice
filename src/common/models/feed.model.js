@@ -46,6 +46,10 @@ angular.module('patientory.common')
     function getUrlForId(messageId) {
       return ENDPOINT_URI + 'messages/' + messageId + '.json';
     }
+    
+    service.like = function(messageId, likes) {
+      return $http.put(ENDPOINT_URI  + 'messages/' + messageId + '/likes.json', likes + 1);
+    };
 
     service.all = function () {
       return $http.get(getUrl()).then(extract);

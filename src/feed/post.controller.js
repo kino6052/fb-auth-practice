@@ -38,7 +38,10 @@ angular.module('patientory')
     post.postMessage = function (message, isValid) {
       if (isValid) {
         post.loading = true;
+        
         message.user = post.user;
+        message.likes = 0;
+        
         FeedModel.create(message)
           .then(function (result) {
               $state.go("feed");

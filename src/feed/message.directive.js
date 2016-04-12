@@ -20,6 +20,10 @@ angular.module('patientory')
           });
       };
       
+      ctrl.like = function(messageId, likes) {
+        FeedModel.like(messageId, likes)
+      }
+      
       ctrl.toggleCommentPopup = function(){
         console.log("toggled");
         ctrl.commentPopup = !ctrl.commentPopup;

@@ -34,8 +34,11 @@ angular.module('patientory')
       }
     });
     
+    main.menuName = '';
+    
     main.isNavEnabled = function(){
-  		if ($state.$current.name === "feed") { 
+  		if ($state.$current.name === "feed" || $state.$current.name === "profile") { 
+  			main.menuName = $state.$current.name;
   			return true;
   		}
   		else {
