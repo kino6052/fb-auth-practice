@@ -1,4 +1,4 @@
-<div class="message-popup">
+<div class="message-popup" ng-if="comme">
   <h2>POST COMMENT</h2>
   <textarea id="comment_to_post" ng-model="$parent.message.newComment" placeholder="Your Comment..."/>
   <button ng-click="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment});ctrl.toggleCommentPopup();" class="button-red">SUBMIT</button>

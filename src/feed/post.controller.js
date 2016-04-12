@@ -8,8 +8,11 @@ angular.module('patientory')
     post.messagePopup = FeedModel.messagePopup;
     post.loading = false;
     
-    var userId   = UserModel.getCurrentUser();
-    
+    var userId   = UserModel.getCurrentUser().uid;
+    post.user = {};
+    $scope.$on('userData', function(event, data){
+      post.user = data;
+    });
     function getValue(object){
       for (var key in object){
         return object[key];
@@ -35,7 +38,7 @@ angular.module('patientory')
     post.postMessage = function (message, isValid) {
       if (isValid) {
         post.loading = true;
-
+        message.user = post.user;
         FeedModel.create(message)
           .then(function (result) {
               $state.go("feed");

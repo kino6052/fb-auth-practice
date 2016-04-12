@@ -14,7 +14,6 @@ angular.module('patientory')
       };
       
       ctrl.postComment = function (messageId, commentObject) {
-        alert("postComment(" + messageId + ', ' + commentObject);
         FeedModel.comment(messageId, commentObject)
           .then(function(result){
             $rootScope.$broadcast('updateFeed');
@@ -22,6 +21,7 @@ angular.module('patientory')
       };
       
       ctrl.toggleCommentPopup = function(){
+        console.log("toggled");
         ctrl.commentPopup = !ctrl.commentPopup;
       };
       

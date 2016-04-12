@@ -69,9 +69,7 @@ angular.module('patientory.common')
       
       return $http.get(ENDPOINT_URI + 'users/' + userId + '.json').then(function(response){
             service.userData = getValue(response.data);
-            console.log("$onAuth");
-            console.log(response.data);
-            $rootScope.$broadcast("userData");
+            $rootScope.$broadcast("userData", getValue(response.data));
           })
           .catch(function(err){
             console.log(err);
@@ -83,7 +81,7 @@ angular.module('patientory.common')
       var ref = new Firebase(ENDPOINT_URI);
       var authData = ref.getAuth();
       try {
-        return authData.uid;
+        return authData;
       }
       catch (err) {
         return;

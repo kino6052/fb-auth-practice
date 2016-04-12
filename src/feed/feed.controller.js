@@ -8,7 +8,8 @@ angular.module('patientory')
     ctrl.messagePopup = FeedModel.messagePopup;
     ctrl.loading = false;
     
-    var userId   = UserModel.getCurrentUser();
+    ctrl.user = UserModel.getUserData();
+    var userId   = UserModel.getCurrentUser().uid;
     
     function getValue(object){
       for (var key in object){

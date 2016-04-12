@@ -157,7 +157,12 @@
     transform: translate(-50%, 0);
     bottom: 40px; }
 </style>
-
+<div class="message-popup" ng-if="commentPopup">
+  <h2>POST COMMENT</h2>
+  <textarea id="comment_to_post" ng-model="$parent.message.newComment" placeholder="Your Comment..."/>
+  <button ng-click="ctrl.postComment(messageId, {firstName: ctrl.getFirstName(), lastName: ctrl.getLastName(), text: message.newComment});ctrl.toggleCommentPopup();" class="button-red">SUBMIT</button>
+  <button ui-sref="feed" class="button-gray" id="cancel">CANCEL</button>
+</div>
 <div class="message-container">
   <div class="message-header" >
     <div class="message-pic" style="background-image: url('{{message.user.url}}');">
@@ -176,8 +181,11 @@
   </div>
   
   <div class="buttons">
-    <div class="social-buttons">
+    <div class="social-buttons" style="display: inline-block;">
       <button class="btn btn-primary" ng-click="ctrl.toggleCommentPopup()" style="background-color: transparent; border: 1px solid grey; color: grey;"><span class="glyphicon glyphicon-pencil" ></span></button>
+    </div>
+    <div class="social-buttons" style="display: inline-block;">
+      <button class="btn btn-primary" ng-click="ctrl.like()" style="background-color: transparent; border: 1px solid grey; color: grey;"><span class="glyphicon glyphicon-thumbs-up" ></span> 0</button>
     </div>
   </div>
   
