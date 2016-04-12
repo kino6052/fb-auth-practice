@@ -185,7 +185,7 @@
       <button class="btn btn-primary" ng-click="ctrl.toggleCommentPopup()" style="background-color: transparent; border: 1px solid grey; color: grey;"><span class="glyphicon glyphicon-pencil" ></span></button>
     </div>
     <div class="social-buttons" style="display: inline-block;">
-      <button class="btn btn-primary" ng-click="ctrl.like(messageId, message.likes)" style="background-color: transparent; border: 1px solid grey; color: grey;"><span class="glyphicon glyphicon-thumbs-up" ></span> {{message.likes}}</button>
+      <button class="btn btn-primary" ng-init="ctrl.extractLikes(messageId)" ng-click="ctrl.like(messageId)" style="background-color: transparent; border: 1px solid grey; color: grey;"><span class="glyphicon glyphicon-thumbs-up" ></span> {{ctrl.likes[messageId]}}</button>
     </div>
   </div>
   

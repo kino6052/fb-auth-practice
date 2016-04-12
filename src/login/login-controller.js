@@ -13,8 +13,7 @@ angular.module('patientory')
       lastName: '',
       vision: '',
       height: '',
-      password: '',
-      register: false
+      password: ''
     };
 
     function register() {
@@ -48,9 +47,9 @@ angular.module('patientory')
       .then(function(result){
         console.log("RESULT");
         console.log(result);
-        UserModel.saveUserInfo(UserModel.getCurrentUser(), login.user)
+        UserModel.saveUserInfo(UserModel.getCurrentUser().uid, login.user)
           .then(function(response){
-            UserModel.getUserData(UserModel.getCurrentUser());
+            UserModel.getUserData(UserModel.getCurrentUser().uid);
           });
       })
       .catch(onError)
@@ -80,10 +79,8 @@ angular.module('patientory')
         login.loading = true;
 
         if (isRegistering) {
-          alert("Registering...")
           register();
         } else {
-          alert("Loging in...")
           onLogin();
         }
       }

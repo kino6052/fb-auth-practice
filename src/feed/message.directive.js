@@ -4,6 +4,13 @@ angular.module('patientory')
       var ctrl = this;
       ctrl.commentPopup = false;
       ctrl.loading = false;
+      ctrl.likes = {};
+      
+      ctrl.extractLikes = function(messageId){
+        FeedModel.extractLikes(messageId).then(function(data){
+          ctrl.likes[messageId] = data;
+        });
+      };
       
       ctrl.getFirstName = function () {
         return UserModel.userData.firstName;
@@ -20,9 +27,9 @@ angular.module('patientory')
           });
       };
       
-      ctrl.like = function(messageId, likes) {
-        FeedModel.like(messageId, likes)
-      }
+      ctrl.like = function(messageId) {
+        FeedModel.like(messageId, UserModel.getCurrentUser().uid);
+      };
       
       ctrl.toggleCommentPopup = function(){
         console.log("toggled");

@@ -47,8 +47,28 @@ angular.module('patientory.common')
       return ENDPOINT_URI + 'messages/' + messageId + '.json';
     }
     
-    service.like = function(messageId, likes) {
-      return $http.put(ENDPOINT_URI  + 'messages/' + messageId + '/likes.json', likes + 1);
+    service.like = function(messageId, userId) {
+      var url = ENDPOINT_URI  + 'messages/' + messageId + '/likes/' + userId + '.json';
+      return service.getLikes(messageId, userId).then(function(result){
+        $http.put(url, 1);
+      });
+      //return $http.put(ENDPOINT_URI  + 'messages/' + messageId + '/likes/' + userId + '.json', like + 1);
+    };
+    
+    service.getLikes = function(messageId, userId) {
+      return $http.get(ENDPOINT_URI  + 'messages/' + messageId + '/likes/' + userId + '.json');
+    };
+    
+    service.extractLikes = function(messageId){
+      var sum = 0;
+      return $http.get(ENDPOINT_URI  + 'messages/' + messageId + '/likes.json')
+        .then(function(result){
+          console.log(result.data);
+          for (var like in result.data) {
+              sum += Number(result.data[like]); 
+          }
+          return sum;
+        });
     };
 
     service.all = function () {

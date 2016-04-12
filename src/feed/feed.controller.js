@@ -9,7 +9,8 @@ angular.module('patientory')
     ctrl.loading = false;
     
     ctrl.user = UserModel.getUserData();
-    var userId   = UserModel.getCurrentUser().uid;
+    var userId = UserModel.getCurrentUser().uid;
+    ctrl.userId = UserModel.getCurrentUser().uid; 
     
     function getValue(object){
       for (var key in object){
@@ -68,7 +69,7 @@ angular.module('patientory')
       ctrl.loading = false;
       ctrl.newBoard = {
         email: UserModel.getEmail(),
-        uid: UserModel.getCurrentUser(),
+        uid: UserModel.getCurrentUser().uid,
         text: ''
       };
     };
