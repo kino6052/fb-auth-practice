@@ -5,7 +5,7 @@
       <h2>TAG</h2>
     </div>
     <div class="tag-select" style="display: inline-block;">
-      <select style="" ng-model="ctrl.searchQuery">
+      <select style="" ng-model="post.searchQuery">
         <option>T1D</option>
         <option>Living with Diabetes</option>
         <option>New Mom</option>
@@ -13,6 +13,6 @@
       </select>      
     </div>
   </div>
-  <button ng-click="ctrl.searchMessagesWithTag(ctrl.searchQuery)" class="button-red" id="submit">SEARCH</button>
+  <button ng-click="post.searchMessagesWithTag(post.searchQuery)" class="button-red" id="submit">SEARCH</button>
   <button ui-sref="feed" class="button-gray" id="cancel">CANCEL</button>
 </div>

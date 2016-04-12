@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('patientory')
-  .controller('PostCtrl', function ($rootScope, $scope, $stateParams, FeedModel, UserModel, CommentModel, ENDPOINT_URI) {
+  .controller('PostCtrl', function ($rootScope, $scope, $state, $stateParams, FeedModel, UserModel, CommentModel, ENDPOINT_URI) {
     var post = this;
     post.stateParams = $stateParams;
     post.tag=post.stateParams.tag;
@@ -38,9 +38,10 @@ angular.module('patientory')
 
         FeedModel.create(message)
           .then(function (result) {
+              $state.go("feed");
           })
           .catch(function (reason) {
-            //
+            console.log(reason);
           })
           .finally(function () {
             post.resetForm();
